@@ -1,0 +1,46 @@
+.alert {
+    padding: 20px;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    color: white;
+    position: fixed;
+    top: 12rem;
+    right: 5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    z-index: 11111111111;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: #fff;
+}
+ 
+/* media query */
+@media screen and (max-width: 55em) {
+    .alert {
+        top: 2rem;
+    }
+}
+
+ @media screen and (max-width: 45em) {
+    .alert {
+        width: 80%;
+        top: 2rem;
+        left: 1rem;
+   }
+}
+
+@media screen and (max-width: 35em) {
+    .alert {
+        top: 2rem;
+   }
+}
