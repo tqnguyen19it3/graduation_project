@@ -34,33 +34,33 @@ const Filter = ({
     }
   };
 
-  // useEffect(() => {
-  //  const timer = setTimeout (() => setSearch(debouncedSearch), 1000);
-  //  return () => clearTimeout(timer);
-  // }, [debouncedSearch]);
+  useEffect(() => {
+   const timer = setTimeout (() => setSearch(debouncedSearch), 1000);
+   return () => clearTimeout(timer);
+  }, [debouncedSearch]);
 
-  // useEffect(() => {
-  //   setAllImages(oldImages);
-  //   setImagesCopy(oldImages);
-  //   if(search){
-  //     onHandleSearch(search);
-  //   } else {
-  //     onClearSearch();
-  //   }
-  // }, [search]);
+  useEffect(() => {
+    setAllImages(oldImages);
+    setImagesCopy(oldImages);
+    if(search){
+      onHandleSearch(search);
+    } else {
+      onClearSearch();
+    }
+  }, [search]);
 
   const filter = [
     {name: "Old Images"},
     {name: "Recent Images"},
   ];
 
-  // useEffect(() => {
-  //   if (activeSelect == "Old Images"){
-  //     setAllImages(oldImages);
-  //   } else {
-  //     setAllImages(oldImages.reverse());
-  //   }
-  // }, [activeSelect]);
+  useEffect(() => {
+    if (activeSelect == "Old Images"){
+      setAllImages(oldImages);
+    } else {
+      setAllImages(oldImages.reverse());
+    }
+  }, [activeSelect]);
 
   return (
     <div className={Style.Filter}>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Cookies from 'js-cookie';
 import Style from "./Header.module.css";
 import { Logo, Login, SignUp } from "../index";
 
@@ -19,27 +20,29 @@ const Header = ({ notification, setNotification }) => {
     },
   ];
 
-  const [signup, setSignup] = useState(false);
+  const [signUp, setSignUp] = useState(false);
   const [login, setLogin] = useState(false);
   const [token, setToken] = useState("");
 
   const openModel = (el) => {
     if(el == "Login") {
       setLogin(true);
-      setSignup(false);
+      setSignUp(false);
     } else if (el == "SignUp"){
-      setSignup(true);
+      setSignUp(true);
       setLogin(false);
     }
   };
   
   useEffect(() => {
-    const token = localStorage.getItem("NFTApi Token");
+    const token = localStorage.getItem("NFTApi_Token");
     setToken(token);
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("NFTApi Token");
+    localStorage.removeItem("NFTApi_Token");
+    Cookies.remove('NFTApi_Token');
+    document.cookie = 'NFTApi_Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     window.location.reload();
   };
 
@@ -64,12 +67,12 @@ const Header = ({ notification, setNotification }) => {
         </div>
       </div>
       {/* //SignUp */}
-      {signup && (
+      {signUp && (
         <div className={Style.form}>
           <div className={Style.form_inner}>
             <SignUp
               setLogin={setLogin}
-              setSignup={setSignup}
+              setSignUp={setSignUp}
               notification={notification}
               setNotification={setNotification}
             />
@@ -82,7 +85,7 @@ const Header = ({ notification, setNotification }) => {
           <div className={Style.form_inner}>
             <Login
               setLogin={setLogin}
-              setSignup={setSignup}
+              setSignUp={setSignUp}
               notification={notification}
               setNotification={setNotification}
             />

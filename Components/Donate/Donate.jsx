@@ -15,7 +15,7 @@ const Donate = ({ setDonate, setSupport, donateAmount, setLoading }) => {
              <input
               type="number"
               class={Style.input_field}
-              placeholder="Amount 0.025"
+              placeholder="Ex: Amount 0.025"
               autoComplete="off"
               min={0.025}
               onChange={(e) => setSupport(e.target.value)}

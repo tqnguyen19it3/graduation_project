@@ -1,0 +1,10 @@
+863980f49c347aa58380df3c7839dd3b
+hlCVCvbYEg4BuWyOj0v_2Xxbrep2WDFwrludsG1LAFAyD43JD-3V4wJN3swGbwM3qsWkASZZQ0ALeuwq8H1Muw
+
+
+filter recent sang old
+thông báo lỗi trả API trả về khi login vs signup...
+giao diện nút checkbox + select file
+giao diện password đổi lại thành dấu hoa thị
+xóa token ở cookie ko đc
+donate người tạo tự donate tiền trừ nhưng ko nhảy ko vô đúng tk

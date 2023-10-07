@@ -17,8 +17,7 @@ const Profile = ({ setOpenProfile, userBalance, address }) =>{
             onClick={() => setOpenProfile(true)}
           />
         </div>
-        {/* <span> {address.slice(0, 25)}</span> */}
-        <span> asdasdsadasdsad...</span>
+        <span> {address.slice(0, 25)}</span>
         <p class={Style.info}>
           {userBalance} Welcome to NFTs IPFS Upload Our products help you securely distribute any type of media at scale-freeing you from restrictive platforms, middlemen, and algorithms that limit your creative agency.
         </p>

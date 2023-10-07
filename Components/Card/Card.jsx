@@ -9,12 +9,11 @@ const Card = ({ setNotification, image, index }) => {
     return (
         <div class={Style.card}>
             <div class={Style.content}>
-                {/* <a href={`/image/${image.imageID}`}> */}
-                <a href={`/image/1`}>    
+                <a href={`/image/${image.imageID}`}>
                     <p>
-                        <Image
+                        <img
                             className= {Style.image}
-                            src={imagesNFT.img1}
+                            src={image.image}
                             alt="image"
                             width={250}
                             height={200}
@@ -24,8 +23,7 @@ const Card = ({ setNotification, image, index }) => {
                 <span class={Style.para}>
                     <Image
                         className="avatar_img"
-                        // src={images[`client${index + 1}`]}
-                        src={images[`client1`]}
+                        src={images[`client${index + 1}`]}
                         width={40}
                         height={40}
                     />
@@ -33,23 +31,18 @@ const Card = ({ setNotification, image, index }) => {
                         className={Style.para_small}
                         onClick={() => (
                             setNotification("Successfully copied"),
-                            // navigator.clipboard.writeText(image.owner)
-                            navigator.clipboard.writeText('Successfully copied')
+                            navigator.clipboard.writeText(image.owner)
                         )}
                     >
-                        asdasdasdasdasdasdsadasd...
-                        {/* {image.owner.slice(0, 25)}... */}
+                        {image.owner.slice(0, 25)}...
                     </small>
                 </span>
 
                 <span>
-                    Oct 06 2023
-                    {/* CreatedAt: {new Date(image.createdAt * 1000).toDateString()} */}
-                    {/* <small className={Style. number}>#{image.imageID}</small> */}
-                    <small className={Style.number}>#1</small>
+                    CreatedAt: {new Date(image.createdAt * 1000).toDateString()}
+                    <small className={Style.number}>#{image.imageID}</small>
                 </span>
-                {/* <small class={Style.para}>{image.description.slice(0, 80)}..</small> */}
-                <small class={Style.para}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, qui explicabo? Quo voluptate, quia nostrum libero harum explicabo fuga qui enim sed voluptatibus ea expedita unde repellendus reprehenderit nesciunt! Libero...</small>
+                <small class={Style.para}>{image.description.slice(0, 80)}..</small>
                 <button
                     onClick={()=> (
                         setNotification("Image URL is Successfully copied"),

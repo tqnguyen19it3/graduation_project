@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FormSVG, Lock } from "../SVG/index";
- import Style from "./SignUp.module.css";
+import Style from "./SignUp.module.css";
 import { Notification } from "../index";
 
-const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
+const SignUp = ({ setLogin, setSignUp, notification, setNotification }) => {
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -13,7 +13,7 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
   });
 
   const handleFormFieldChange = (fieldName, e) => {
-    setUser({ ...user, [fieldName]: e.target. value });
+    setUser({ ...user, [fieldName]: e.target.value });
   };
 
   const createAccount = async (e) => {
@@ -26,12 +26,13 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
     ){
       return setNotification("Please provide all the detail");
     }
-    setNotification ("Wait creating account...");
-    try{
+    setNotification("Wait creating account...");
+    console.log(user);
+    try {
       //API CALL
       const response = await axios({
         method: "POST",
-        url: `/api/v1/user/signup`,
+        url: `/api/v1/user/singup`,
         withCredentials: true,
         data: {
           name: user.name,
@@ -42,8 +43,8 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
       });
       if(response.data.status == "success") {
         setNotification("Account is successfully created");
-        localStorage.setItem("NFTApi Token", response.data.token);
-        setSignup(false);
+        localStorage.setItem("NFTApi_Token", response.data.token);
+        setSignUp(false);
         setNotification("");
         window.location.reload();
       } else {
@@ -62,13 +63,13 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
             <p id="heading" className={Style.heading}>
               SignUp
             </p>
-            <div class= {Style.field}>
+            <div class={Style.field}>
               <FormSVG styleClass={Style.input_icon} />
               <input
                 type="text"
                 class={Style.input_field}
                 placeholder="name"
-                autocomplete="off"
+                autoComplete="off"
                 onChange={(e) => handleFormFieldChange("name", e)}
               />
             </div>
@@ -78,17 +79,17 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
                 type="text"
                 class={Style.input_field}
                 placeholder="email"
-                autocomplete="off"
+                autoComplete="off"
                 onChange={(e) => handleFormFieldChange("email", e)}
               />
             </div>
             <div class={Style.field}>
-              <Lock styleClass={Style. input_icon} />
+              <Lock styleClass={Style.input_icon} />
               <input
                 type="text"
                 class={Style.input_field}
                 placeholder="password"
-                  onChange={(e) => handleFormFieldChange("password", e)}
+                onChange={(e) => handleFormFieldChange("password", e)}
               />
             </div>
             <div class={Style.field}>
@@ -101,12 +102,12 @@ const SignUp = ({ setLogin, setSignup, notification, setNotification }) => {
               />
             </div>
             <div class={Style.btn}>
-              <button class={Style.button1} onClick={() => setSignup(false)}>
+              <button class={Style.button1} onClick={() => setSignUp(false)}>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </button>
               <button
                 class={Style.button2}
-                onClick={() => (setLogin(true), setSignup(false))}
+                onClick={() => (setLogin(true), setSignUp(false))}
               >
                 Login
               </button>

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.9;
 
 contract nftsIPFS {
-    address payable contractOwner = payable(0x7fdb829a3B97e6cF93F1176276faa43BEF062105);
+    address payable contractOwner = payable(0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0);
     uint256 public listingPrice = 0.025 ether;
 
     struct NFTs {

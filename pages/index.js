@@ -93,7 +93,7 @@ const Home = () => {
             "Content-Type": "multipart/form-data",
           }
         });
-        const image = `https://gateway.pinata.cloud/ipfs/$(response.data.IpfsHash}`;
+        const image = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
         await UploadImage({
           ...imageInfo,
           image: image,

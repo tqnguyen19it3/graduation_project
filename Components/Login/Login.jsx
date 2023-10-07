@@ -4,11 +4,11 @@ import { FormSVG, Lock } from "../SVG/index";
 import Style from "./Login.module.css";
 import { Notification } from "../index";
 
-const Login = ({ setLogin, setSignup, notification, setNotification }) => {
+const Login = ({ setLogin, setSignUp, notification, setNotification }) => {
   //API LOGIN
   const [user, setUser] = useState({
     email: "",
-    password:"",
+    password: "",
   });
 
   const handleFormFieldChange = (fieldName, e) => {
@@ -19,7 +19,7 @@ const Login = ({ setLogin, setSignup, notification, setNotification }) => {
     e.preventDefault();
 
     if (user.email == "" || user.password == "") {
-      return setNotification("Please Provide email and password");
+      return setNotification("Please provide email and password123");
     }
 
     try {
@@ -34,16 +34,16 @@ const Login = ({ setLogin, setSignup, notification, setNotification }) => {
       });
       if(response.data.status == "success"){
         setNotification("You have Successfully login");
-        localStorage.setItem("NFTApi Token", response.data.token);
+        localStorage.setItem("NFTApi_Token", response.data.token);
         setLogin(false);
         setNotification("");
         window.location.reload();
       } else if (response.data.status == "fail"){
-        setNotification(response.data.message);
+        return setNotification(response.data.message);
       }
-      } catch (error) {
-        console.log(error);
-      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -59,7 +59,7 @@ const Login = ({ setLogin, setSignup, notification, setNotification }) => {
                 type="text"
                 class={Style.input_field}
                 placeholder="email"
-                autocomplete="off"
+                autoComplete="off"
                 onChange={(e) => handleFormFieldChange("email", e)}
               />
             </div>
@@ -78,7 +78,7 @@ const Login = ({ setLogin, setSignup, notification, setNotification }) => {
               </button>
               <button
                 class={Style.button2}
-                onClick={() => (setSignup(true), setLogin(false))}
+                onClick={() => (setSignUp(true), setLogin(false))}
               >
                 Sign Up
               </button>

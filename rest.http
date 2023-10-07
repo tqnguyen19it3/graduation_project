@@ -1,1 +1,30 @@
 GET http://localhost:3000/
+
+
+###
+GET http://localhost:3000/api/v1/NFTs
+
+
+###
+POST http://localhost:3000/api/v1/user/singup
+Content-Type: application/json
+
+{
+    "name": "tqnguyen",
+    "email": "tqnguyen259@gmail.com",
+    "password": "12345",
+    "passwordConfirm": "12345"
+}
+
+###
+POST http://localhost:3000/api/v1/NFTs/
+Content-Type: application/json
+
+{
+    "title": "NFT test",
+    "description": "test desc",
+    "category": "Nature",
+    "image": "12345",
+    "address": "0x1231231233",
+    "email": "tqnguyen@gmail.com"
+}
