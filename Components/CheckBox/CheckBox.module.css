@@ -29,7 +29,7 @@
     border-color: #454b00;
 }
 
-.material_checkbox input[type=" checkbox"]:checked ~ .checkmark:after {
+.material_checkbox input[type="checkbox"]:checked ~ .checkmark:after {
     content: "";
     position: absolute;
     top: 2px;

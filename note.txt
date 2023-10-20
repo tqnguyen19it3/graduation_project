@@ -1,10 +1,29 @@
 863980f49c347aa58380df3c7839dd3b
 hlCVCvbYEg4BuWyOj0v_2Xxbrep2WDFwrludsG1LAFAyD43JD-3V4wJN3swGbwM3qsWkASZZQ0ALeuwq8H1Muw
 
+pinata API key:
+    admin
+    -API Key: d399bea0f790315b445a
 
-filter recent sang old
-thông báo lỗi trả API trả về khi login vs signup...
-giao diện nút checkbox + select file
-giao diện password đổi lại thành dấu hoa thị
-xóa token ở cookie ko đc
-donate người tạo tự donate tiền trừ nhưng ko nhảy ko vô đúng tk
+    -API Secret: 8a2a3286be2be03124bfb20660c6af78201b70d6db4daa2b6eb83d8592f01cfc
+
+    -JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwMGQwZDdhMy1lYjEyLTRjNDAtYWVkNi0wNDIxMGYyZGQ5NDMiLCJlbWFpbCI6InRxbmd1eWVuLjE5aXQzQHNpY3QudWRuLnZuIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6ImQzOTliZWEwZjc5MDMxNWI0NDVhIiwic2NvcGVkS2V5U2VjcmV0IjoiOGEyYTMyODZiZTJiZTAzMTI0YmZiMjA2NjBjNmFmNzgyMDFiNzBkNmRiNGRhYTJiNmViODNkODU5MmYwMWNmYyIsImlhdCI6MTY5NjcwMTcwMX0.-yd7YNpRrEmBW2D5scw1Z-kO1iZll5u6-JGGAIO5h5k
+
+    NFT
+    -API Key: 3b1697b42d5859d6a42f
+
+    -API Secret: dcfcb3154f52ba92f8813b9a2ee29c236261df3de39625e17144f84c4fbb8a0f
+
+    -JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwMGQwZDdhMy1lYjEyLTRjNDAtYWVkNi0wNDIxMGYyZGQ5NDMiLCJlbWFpbCI6InRxbmd1eWVuLjE5aXQzQHNpY3QudWRuLnZuIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjNiMTY5N2I0MmQ1ODU5ZDZhNDJmIiwic2NvcGVkS2V5U2VjcmV0IjoiZGNmY2IzMTU0ZjUyYmE5MmY4ODEzYjlhMmVlMjljMjM2MjYxZGYzZGUzOTYyNWUxNzE0NGY4NGM0ZmJiOGEwZiIsImlhdCI6MTY5NjcwMjc0Mn0.O2SDanzp-i2vYSXY1y4Mk1Z1pq7PmNuAwC7BBwOuMJ0
+
+//////////////////// FIX ///////////////////////////////////
+
+chỉnh lại gd
+làm trang about
+search chưa tốt
+sendMail khi tạo NFT
+
+//////////////////// NOTE ///////////////////////////////////
+xóa token ở cookie (ko cần thiết vì đang dùng HttpOnly: true ở server, mà chức năng logout chỉ thực hiện ở client)
+tự donate vào NFT mình tự tạo thì chỉ tốn fee gas, tiền nó vẫn chuyển về chính chủ
+donate quá tiền có trong ví -> lỗi ở console (chưa xử lý hiển thị cụ thể)

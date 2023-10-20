@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Helmet } from 'react-helmet';
 import Image from "next/image";
 import { saveAs } from "file-saver";
 import Style from "./Product.module.css";
 import BTNStyle from "../Button/Button.module.css";
-import images from "../Image/index";
 import client from "../Image/client/index";
 import { Donate } from "../index";
 
@@ -22,6 +22,9 @@ const Product = ({
   const [donate, setDonate] = useState(false);
   return (
     <div className={Style.Product}>
+      <Helmet>
+        <title>NFT Details</title>
+      </Helmet>
       <div className= {Style.image}>
         <img className={Style.image_img} src={image?.imageURL} alt="image" />
       </div>
@@ -48,11 +51,12 @@ const Product = ({
                 src={client[`client${1}`]}
                 width={40}
                 height={40}
+                alt="image"
               />
               <small
                 className={Style.para_small}
                 onClick={() => (
-                  setNotification("Successfully copied"),
+                  setNotification("The wallet address has been copied successfully"),
                   navigator.clipboard.writeText(image?.creator)
                 )}
               >
@@ -62,7 +66,7 @@ const Product = ({
           </div>
           <button
             onClick={() => (
-              setNotification("Image URL is Successfully copied"),
+              setNotification("The image URL has been copied successfully"),
               navigator.clipboard.writeText(image?.imageURL)
             )}
             class={BTNStyle.button}

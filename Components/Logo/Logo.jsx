@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Style from "./Logo.module.css";
 
 const Logo = () => {

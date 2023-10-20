@@ -24,7 +24,7 @@ const Form = ({
               type="text"
               class={Style.input_field}
               placeholder="title"
-              autocomplete="off"
+              autoComplete="off"
               onChange={(e) => handleFormFieldChange("title", e)}
             />
           </div>

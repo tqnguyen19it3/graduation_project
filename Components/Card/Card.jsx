@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import Style from "./Card.module.css";
 import images from "../Image/client/index";
-import imagesNFT from "../Image/index";
 
 const Card = ({ setNotification, image, index }) => {
     return (
@@ -26,6 +24,7 @@ const Card = ({ setNotification, image, index }) => {
                         src={images[`client${index + 1}`]}
                         width={40}
                         height={40}
+                        alt="image"
                     />
                     <small
                         className={Style.para_small}

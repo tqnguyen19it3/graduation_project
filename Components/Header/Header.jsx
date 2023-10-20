@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Cookies from 'js-cookie';
 import Style from "./Header.module.css";
 import { Logo, Login, SignUp } from "../index";
 
@@ -12,7 +11,7 @@ const Header = ({ notification, setNotification }) => {
     },
     {
       name: "About",
-      link: "#",
+      link: "/about",
     },
     {
       name: "API",
@@ -41,15 +40,13 @@ const Header = ({ notification, setNotification }) => {
 
   const logout = () => {
     localStorage.removeItem("NFTApi_Token");
-    Cookies.remove('NFTApi_Token');
-    document.cookie = 'NFTApi_Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     window.location.reload();
   };
 
   return (
     <>
       <div className={Style.Header}>
-        <Logo />
+        <a href="/"><Logo /></a>
         <div className={Style.menu}>
           {menuList.map((el, i) => (
             <Link className={Style.link} href={el.link} key={i + 1}>

@@ -1,35 +1,14 @@
 import React, { useState } from "react";
+import { Helmet } from 'react-helmet';
 import { Header, Footer, Notification, Logo } from "../Components";
 import { useStateContext } from "../Context/NFTs";
-import { Helmet } from 'react-helmet';
 
-const nftsAPI = () => {
+const about = () => {
   //STATE VARIABLE
   const { loading } = useStateContext();
   const [notification, setNotification] = useState("");
 
   const apiEndpoint = [
-    {
-      title: "Get All NFTs",
-      description:
-        "Welcome to NFTs Api, access to all the nfts uploaded to IPFS, by following the mention steps down below",
-      method: "GET",
-      endpoint: "http://localhost:3000/api/v1/NFTs",
-    },
-    {
-      title: "Get Single NFTs",
-      description:
-        "Single NFTS Api endpoint, get access to single nft uploaded to IPFS, by following the mention steps down below",
-      method: "GET",
-      endpoint: "http://localhost:3000/api/v1/NFTs/Id",
-    },
-    {
-      title: "Create Image Upload",
-      description:
-        "This endpoint will allow you to make post request on the server to upload the Image",
-      method: "POST",
-      endpoint: "http://localhost:3000/api/v1/NFTs",
-    },
     {
       title: "Login EndPoint",
       description:
@@ -49,11 +28,11 @@ const nftsAPI = () => {
   return (
     <div className="home">
       <Helmet>
-        <title>NFTs API Page</title>
+        <title>About Page</title>
       </Helmet>
       <Header notification={notification} setNotification={setNotification} />
       <div className="header">
-        <h1>How To Use NFTs API</h1>
+        <h1>About</h1>
       </div>
       <div className="api-body">
         {apiEndpoint.map((api, i) => (
@@ -83,4 +62,4 @@ const nftsAPI = () => {
   );
 };
 
-export default nftsAPI;
+export default about;

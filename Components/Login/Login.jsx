@@ -18,10 +18,7 @@ const Login = ({ setLogin, setSignUp, notification, setNotification }) => {
   const apiLogin = async (e) => {
     e.preventDefault();
 
-    if (user.email == "" || user.password == "") {
-      return setNotification("Please provide email and password123");
-    }
-
+    setNotification("Waiting for login...");
     try {
       const response = await axios({
         method: "POST",
@@ -32,17 +29,23 @@ const Login = ({ setLogin, setSignUp, notification, setNotification }) => {
           password: user.password,
         },
       });
+      console.log(response.data);
+      console.log(typeof response.data.status)
       if(response.data.status == "success"){
         setNotification("You have Successfully login");
         localStorage.setItem("NFTApi_Token", response.data.token);
         setLogin(false);
-        setNotification("");
         window.location.reload();
-      } else if (response.data.status == "fail"){
-        return setNotification(response.data.message);
+      } else {
+        setNotification('Something went wrong, try again later');
       }
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        setNotification(error.response.data.message);
+      } else {
+        setNotification("An error occurred. Please try again.");
+      }
+      console.error(error);
     }
   };
   return (
@@ -58,7 +61,7 @@ const Login = ({ setLogin, setSignUp, notification, setNotification }) => {
               <input
                 type="text"
                 class={Style.input_field}
-                placeholder="email"
+                placeholder="Email"
                 autoComplete="off"
                 onChange={(e) => handleFormFieldChange("email", e)}
               />
@@ -66,7 +69,7 @@ const Login = ({ setLogin, setSignUp, notification, setNotification }) => {
             <div class={Style.field}>
               <Lock styleClass={Style.input_icon} />
               <input
-                type="text"
+                type="password"
                 class={Style.input_field}
                 placeholder="Password"
                 onChange={(e) => handleFormFieldChange("password", e)}

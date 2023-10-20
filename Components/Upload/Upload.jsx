@@ -32,6 +32,7 @@ const Upload = ({ onImageChange, display, retrieveFile }) => {
             <input
                 id="file"
                 onChange={(e) => (onImageChange(e), retrieveFile(e))}
+                className={Style.file}
                 type="file"
             />
         </div>

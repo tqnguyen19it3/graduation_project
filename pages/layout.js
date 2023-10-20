@@ -20,8 +20,7 @@ const layout = () => {
             <CheckBox />
             <Footer />
         </div>
-    ) 
-
+    )
 }
 
 export default layout;

@@ -14,6 +14,7 @@ const Profile = ({ setOpenProfile, userBalance, address }) =>{
             src={images.client1}
             width={80}
             height={80}
+            alt="image"
             onClick={() => setOpenProfile(true)}
           />
         </div>

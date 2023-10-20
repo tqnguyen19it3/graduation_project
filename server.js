@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const next = require("next");
 const dotenv = require("dotenv");
 
+
 const dev = process.env.NODE_ENV != "production";
 const nextServer = next({ dev });
 const handle = nextServer.getRequestHandler();
@@ -23,7 +24,6 @@ mongoose.connect(DB, {
 }).then(() => console.log("MongoDB connection successful!"));
 
 const PORT = process.env.PORT;
-let server;
 nextServer.prepare().then(() => {
     app.get("*", (req, res) => {
         return handle(req, res);

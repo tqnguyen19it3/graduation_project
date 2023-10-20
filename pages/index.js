@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from 'react-helmet';
 import Image from "next/image";
 import axios from "axios";
 import {
@@ -90,6 +91,8 @@ const Home = () => {
           headers: {
             pinata_api_key: `9d03a2850c7a2c190538`,
             pinata_secret_api_key: `19df2cf3af00256fc86448cee4cd5796e58acb0dcd62ba86090c28aaad4efba5`,
+            // pinata_api_key: `3b1697b42d5859d6a42f`,
+            // pinata_secret_api_key: `dcfcb3154f52ba92f8813b9a2ee29c236261df3de39625e17144f84c4fbb8a0f`,
             "Content-Type": "multipart/form-data",
           }
         });
@@ -126,9 +129,12 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Helmet>
+        <title>Home Page</title>
+      </Helmet>
       <Header notification={notification} setNotification={setNotification} />
       <div className="header">
-        <h1>Create 1000 NFTS for Free</h1>
+        <h1>Create 1000 NFTs for Free</h1>
       </div>
       {/* //UPLOAD */}
       <div className="upload">
@@ -159,6 +165,7 @@ const Home = () => {
                     src= {images.client1}
                     width={40}
                     height={40}
+                    alt="image"
                     onClick={() => setOpenProfile(true)}
                   />
                 </p>
