@@ -18,12 +18,17 @@ pinata API key:
 
 //////////////////// FIX ///////////////////////////////////
 
+forget pasword (done API)
 chỉnh lại gd
 làm trang about
+làm trang profile (hiển thị thông tin user, có thể chỉnh sửa thông tin user, hiển thị ds các NFT mà người này tạo)
 search chưa tốt
-sendMail khi tạo NFT
+
+tạo NFT mà tài khoản k có đủ tiền -> lỗi ở console (chưa xử lý chặn hành vi/hiển thị cụ thể, chỉ hiển thị tạm bằng alert)
+chưa connect ví mà donate hay donate quá tiền có trong ví -> lỗi ở console (chưa xử lý chặn hành vi cụ thể, chỉ hiển thị tạm bằng alert)
+
+chưa xử lý trang detail NFT khi cố tình truy cập vào trang NFT không tồn tại
 
 //////////////////// NOTE ///////////////////////////////////
 xóa token ở cookie (ko cần thiết vì đang dùng HttpOnly: true ở server, mà chức năng logout chỉ thực hiện ở client)
-tự donate vào NFT mình tự tạo thì chỉ tốn fee gas, tiền nó vẫn chuyển về chính chủ
-donate quá tiền có trong ví -> lỗi ở console (chưa xử lý hiển thị cụ thể)
+tự donate vào NFT mình tự tạo thì chỉ tốn fee gas, tiền nó vẫn chuyển về chính 

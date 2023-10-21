@@ -26,7 +26,6 @@ const Donate = ({ setDonate, setSupport, donateAmount, setLoading }) => {
             <button class={Style.button1} onClick={() => setDonate(false)}>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Close  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             </button>
-            <button class={Style.button2}>Sign Up</button>
           </div>
           <button
             class={Style.button3}

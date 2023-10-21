@@ -74,37 +74,60 @@ const Home = () => {
     setImageInfo({ ...imageInfo, [fieldName]: e.target.value });
   }
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   //UPLOAD
   const handleSubmit = async (e) => {
     e.preventDefault();
     setCloseForm(false);
     setLoading(true);
-    if(file) {
-      try{
-        const formData = new FormData();
-        formData.append("file", file);
-
-        const response = await axios({
-          method: "post",
-          url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
-          data: formData,
-          headers: {
-            pinata_api_key: `9d03a2850c7a2c190538`,
-            pinata_secret_api_key: `19df2cf3af00256fc86448cee4cd5796e58acb0dcd62ba86090c28aaad4efba5`,
-            // pinata_api_key: `3b1697b42d5859d6a42f`,
-            // pinata_secret_api_key: `dcfcb3154f52ba92f8813b9a2ee29c236261df3de39625e17144f84c4fbb8a0f`,
-            "Content-Type": "multipart/form-data",
-          }
-        });
-        const image = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
-        await UploadImage({
-          ...imageInfo,
-          image: image,
-          category: category,
-        });
-        setFile(null);
-      } catch (error) {
-        console.log(error);             
+    if (
+      !imageInfo.title || !imageInfo.description || !imageInfo.email || !category || !file
+    ){
+      setNotification("Please provide all the detail");
+      setTimeout(function(){
+        location.reload();
+      }, 2000);
+    } else {
+      if(!(emailRegex.test(imageInfo.email))){
+        setNotification("Please provide a valid email address");
+        setTimeout(function(){
+          location.reload();
+        }, 2000);
+      }
+      else if(!address){
+        setNotification("This action requires a connected wallet to sign the transaction");
+        setTimeout(function(){
+          location.reload();
+        }, 3000);
+      } else {
+        try{
+          const formData = new FormData();
+          formData.append("file", file);
+  
+          const response = await axios({
+            method: "post",
+            url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+            data: formData,
+            headers: {
+              pinata_api_key: `9d03a2850c7a2c190538`,
+              pinata_secret_api_key: `19df2cf3af00256fc86448cee4cd5796e58acb0dcd62ba86090c28aaad4efba5`,
+              // pinata_api_key: `3b1697b42d5859d6a42f`,
+              // pinata_secret_api_key: `dcfcb3154f52ba92f8813b9a2ee29c236261df3de39625e17144f84c4fbb8a0f`,
+              "Content-Type": "multipart/form-data",
+            }
+          });
+          const image = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
+          
+          await UploadImage({
+            ...imageInfo,
+            image: image,
+            category: category,
+          });
+          setFile(null);
+        } catch (error) {
+          setNotification("Something went wrong! Please try again");      
+        }
       }
     }
     setFile(null);
@@ -134,7 +157,7 @@ const Home = () => {
       </Helmet>
       <Header notification={notification} setNotification={setNotification} />
       <div className="header">
-        <h1>Create 1000 NFTs for Free</h1>
+        <h1>Create 1000 NFTs for free</h1>
       </div>
       {/* //UPLOAD */}
       <div className="upload">

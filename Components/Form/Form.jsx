@@ -14,11 +14,11 @@ const Form = ({
   return (
     <div class={Style.card}>
       <div class={Style.card2}>
-        <form class={Style. form}>
+        <form class={Style.form}>
           <p id="heading" className={Style.heading}>
             Upload Image Details
           </p>
-          <div class={Style. field}>
+          <div class={Style.field}>
             <FormSVG styleClass={Style.input_icon} />
             <input
               type="text"

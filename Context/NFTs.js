@@ -77,6 +77,9 @@ export const StateContextProvider = ({ children }) => {
             window.location.reload();
         } catch (err) {
             console.error("contract call failure", err);
+            alert("Contract call failure! Please try again")
+            setLoading(false);
+            window.location.reload();
         }
     };
     
@@ -138,6 +141,8 @@ export const StateContextProvider = ({ children }) => {
             window.location.reload();
         } catch (error) {
             console.log(error);
+            alert("Contract call failure! Please try again");
+            window.location.reload();
         }
     };
     

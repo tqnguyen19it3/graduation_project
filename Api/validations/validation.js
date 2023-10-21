@@ -19,7 +19,28 @@ const userLoginValidate = (data) => {
     return userSchema.validate(data);
 }
 
+const userForgetPasswordValidate = (data) => {
+    const userSchema = Joi.object({
+        email: Joi.string().email().required(),
+    });
+    return userSchema.validate(data);
+}
+
+const userCreateNFTValidate = (data) => {
+    const nftSchema = Joi.object({
+        title: Joi.string().required(),
+        description: Joi.string().required(),
+        email: Joi.string().email().required(),
+        image: Joi.string().required(),
+        address: Joi.string().required(),
+        category: Joi.string().required()
+    });
+    return nftSchema.validate(data);
+}
+
 module.exports = {
     userRegisterValidate,
-    userLoginValidate
+    userLoginValidate,
+    userForgetPasswordValidate,
+    userCreateNFTValidate
 }

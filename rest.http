@@ -16,6 +16,15 @@ Content-Type: application/json
     "passwordConfirm": "12345"
 }
 
+
+###
+POST http://localhost:3000/api/v1/user/forgot-password
+Content-Type: application/json
+
+{
+    "email": "rumtqn@gmail.com"
+}
+
 ###
 POST http://localhost:3000/api/v1/NFTs/
 Content-Type: application/json
