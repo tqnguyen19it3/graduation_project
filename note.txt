@@ -18,7 +18,6 @@ pinata API key:
 
 //////////////////// FIX ///////////////////////////////////
 
-forget pasword (done API)
 chỉnh lại gd
 làm trang about
 làm trang profile (hiển thị thông tin user, có thể chỉnh sửa thông tin user, hiển thị ds các NFT mà người này tạo)

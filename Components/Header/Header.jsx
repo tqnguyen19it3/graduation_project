@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Style from "./Header.module.css";
-import { Logo, Login, SignUp } from "../index";
+import { Logo, Login, SignUp, ForgotPassword } from "../index";
 
 const Header = ({ notification, setNotification }) => {
   const menuList = [
@@ -21,6 +21,7 @@ const Header = ({ notification, setNotification }) => {
 
   const [signUp, setSignUp] = useState(false);
   const [login, setLogin] = useState(false);
+  const [forgotPassword, setForgotPassword] = useState(false);
   const [token, setToken] = useState("");
 
   const openModel = (el) => {
@@ -29,6 +30,9 @@ const Header = ({ notification, setNotification }) => {
       setSignUp(false);
     } else if (el == "SignUp"){
       setSignUp(true);
+      setLogin(false);
+    } else if (el == "ForgotPassword"){
+      setForgotPassword(true);
       setLogin(false);
     }
   };
@@ -81,6 +85,21 @@ const Header = ({ notification, setNotification }) => {
         <div className={Style.form}>
           <div className={Style.form_inner}>
             <Login
+              setLogin={setLogin}
+              setForgotPassword={setForgotPassword}
+              setSignUp={setSignUp}
+              notification={notification}
+              setNotification={setNotification}
+            />
+          </div>
+        </div>
+      )}
+      {/* ForgotPassword */}
+      {forgotPassword && (
+        <div className={Style.form}>
+          <div className={Style.form_inner}>
+            <ForgotPassword
+              setForgotPassword={setForgotPassword}
               setLogin={setLogin}
               setSignUp={setSignUp}
               notification={notification}

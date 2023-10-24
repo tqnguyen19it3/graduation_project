@@ -1,38 +1,36 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FormSVG, Lock } from "../SVG/index";
-import Style from "./Login.module.css";
+import Style from "./ForgotPassword.module.css";
 import { Notification } from "../index";
 
-const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotification }) => {
-  //API LOGIN
+const ForgotPassword = ({ setForgotPassword, setLogin, setSignUp, notification, setNotification }) => {
+  // API FORGOT PASSWORD
   const [user, setUser] = useState({
-    email: "",
-    password: "",
+    email: ""
   });
 
   const handleFormFieldChange = (fieldName, e) => {
     setUser({ ...user, [fieldName]: e.target.value });
   };
 
-  const apiLogin = async (e) => {
+  const apiForgotPassword = async (e) => {
     e.preventDefault();
 
-    setNotification("Waiting for login...");
+    setNotification("Waiting to retrieve password...");
     try {
       const response = await axios({
         method: "POST",
-        url: `/api/v1/user/login`,
+        url: `/api/v1/user/forgot-password`,
         withCredentials: true,
         data: {
-          email: user.email,
-          password: user.password,
+          email: user.email
         },
       });
+      console.log("haha: ", response);
       if(response.data.status == "success"){
-        setNotification("You have successfully login");
-        localStorage.setItem("NFTApi_Token", response.data.token);
-        setLogin(false);
+        setNotification(response.data.message);
+        setForgotPassword(false);
         window.location.reload();
       } else {
         setNotification('Something went wrong, try again later');
@@ -52,7 +50,7 @@ const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotifi
         <div class={Style.card2}>
           <form class={Style.form}>
             <p id="heading" className={Style.heading}>
-              Login
+                Retrieve forgotten password
             </p>
             <div class={Style.field}>
               <FormSVG styleClass={Style.input_icon} />
@@ -64,36 +62,27 @@ const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotifi
                 onChange={(e) => handleFormFieldChange("email", e)}
               />
             </div>
-            <div class={Style.field}>
-              <Lock styleClass={Style.input_icon} />
-              <input
-                type="password"
-                class={Style.input_field}
-                placeholder="Password"
-                onChange={(e) => handleFormFieldChange("password", e)}
-              />
-            </div>
             <div class={Style.btn}>
-              <button class={Style.button1} onClick={() => setLogin(false)}>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </button>
+                <button class={Style.button1} onClick={() => setForgotPassword(false)}>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
             </div>
             <div class={Style.btn2}>
-               <button
-                class={Style.button1}
-                onClick={() => (setForgotPassword(true), setLogin(false))}
-              >
-                Forgot password
-              </button>
-              <button
-                class={Style.button2}
-                onClick={() => (setSignUp(true), setLogin(false))}
-              >
-                Sign Up
-              </button>
+                <button
+                    class={Style.button1}
+                    onClick={() => (setLogin(true), setForgotPassword(false))}
+                >
+                    Login
+                </button>
+                <button
+                    class={Style.button2}
+                    onClick={() => (setSignUp(true), setForgotPassword(false))}
+                >
+                    Sign Up
+                </button>
             </div>
-            <button class={Style.button3} onClick={(e) => apiLogin(e)}>
-              Login
+            <button class={Style.button3} onClick={(e) => apiForgotPassword(e)}>
+              Submit
             </button>
           </form>
         </div>
@@ -110,4 +99,4 @@ const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotifi
   );
 };
 
-export default Login;
+export default ForgotPassword;

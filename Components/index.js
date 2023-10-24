@@ -10,6 +10,7 @@ import Filter from "./Filter/Filter";
 import Form from "./Form/Form";
 import CheckBox from "./CheckBox/CheckBox";
 import Login from "./Login/Login";
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import SignUp from "./SignUp/SignUp";
 import Product from "./Product/Product";
 import Donate from "./Donate/Donate";
@@ -26,6 +27,7 @@ export {
   Form,
   CheckBox,
   Login,
+  ForgotPassword,
   SignUp,
   Product,
   Donate,
