@@ -15,7 +15,7 @@
 }
 
 .detail_box {
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: #f89b29 ;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

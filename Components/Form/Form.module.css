@@ -12,14 +12,14 @@
 .heading {
     text-align: center;
     margin: 2em;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background:linear-gradient(to right, #f89b29, #FFFFFF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 1.2em;
 }
  
 .second {
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(to right, #f89b29, #FFFFFF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -79,7 +79,7 @@
     outline: none;
     transition: 0.4s ease-in-out;
     cursor: pointer;                                      
-    background-image: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background-image: linear-gradient(-45deg, #f89b29 20%, #483D8B 100%);
     color:rgb(0, 0, 0);
 }
 
@@ -97,12 +97,12 @@
   outline: none;
   transition: 0.4s ease-in-out;
   cursor: pointer;  
-  background-image: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  background-image: linear-gradient(-45deg, #f89b29 20%, #483D8B 100%);
   color:  rgb(0, 0, 0);
 }
 
 .button2:hover {
-  background-image: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%); 
+  background-image: linear-gradient(-45deg, #483D8B 30%, #32CD32 100%);
   color: rgb(0, 255, 200);
 }
 
@@ -114,17 +114,17 @@
   outline: none;
   transition: 0.4s ease-in-out;
   cursor: pointer;  
-  background-image: linear-gradient(-45deg, #f89b29 0% , #ff0f7b 100%);
+  background-image: linear-gradient(-45deg, #f89b29 20%, #483D8B 100%);
   color: rgb(0, 0, 0);
 }
 
 .button3:hover {
-  background-image: linear-gradient(163deg, #00642f 0%, #13034b 100%);
+  background-image: linear-gradient(-45deg, #483D8B 30%, #32CD32 100%);
   color: rgb(0, 255, 200);
 }
 
 .card {
-  background-image: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  background-image: linear-gradient(to right, #f89b29, #FFFFFF);
   border-radius: 22px;
   transition: all 0.3s;
 }

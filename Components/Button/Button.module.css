@@ -4,7 +4,7 @@
     height: 3rem;
     padding: 0 2rem;
     border-radius: 1.5rem;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #f89b29 40%, #483D8B 100%);
     background-size: 400%;
     color: #fff;
     border: none;
@@ -31,6 +31,61 @@
     border-radius: inherit;
     background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
     transition: all 0.475s;
+}
+
+/* media query */
+@media screen and (max-width: 55em) {
+    .button{
+        position: relative;
+        overflow: hidden;
+        height: 3rem;
+        padding: 0 2rem;
+        border-radius: 1.5rem;
+        background: linear-gradient(-45deg, #f89b29 40%, #483D8B 100%);
+        background-size: 400%;
+        color: #fff;
+        border: none;
+        box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2);
+        margin-top: 1rem;
+        cursor: pointer;
+        width: 180px;
+    }
+}
+
+ @media screen and (max-width: 45em) {
+    .button{
+        position: relative;
+        overflow: hidden;
+        height: 3rem;
+        padding: 0 2rem;
+        border-radius: 1.5rem;
+        background: linear-gradient(-45deg, #f89b29 40%, #483D8B 100%);
+        background-size: 400%;
+        color: #fff;
+        border: none;
+        box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2);
+        margin-top: 1rem;
+        cursor: pointer;
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 35em) {
+    .button{
+        position: relative;
+        overflow: hidden;
+        height: 3rem;
+        padding: 0 2rem;
+        border-radius: 1.5rem;
+        background: linear-gradient(-45deg, #f89b29 40%, #483D8B 100%);
+        background-size: 400%;
+        color: #fff;
+        border: none;
+        box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2);
+        margin-top: 1rem;
+        cursor: pointer;
+        width: 180px;
+    }
 }
    
   

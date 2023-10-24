@@ -25,6 +25,10 @@ const Product = ({
       <Helmet>
         <title>NFT Details</title>
       </Helmet>
+      {!image.imageURL ?  (
+        <h1>NFT NOT FOUND</h1>
+      ) : 
+      (<>
       <div className= {Style.image}>
         <img className={Style.image_img} src={image?.imageURL} alt="image" />
       </div>
@@ -97,7 +101,8 @@ const Product = ({
           <button onClick={() => setDonate(true)} class={BTNStyle.button}>
             <span class={`${BTNStyle.button_content} ${Style.btn}`}>Donate </span>
           </button>
-        </div>
+      </div>
+      </>)}
         {donate && (
           <div className="form">
             <div className="form_inner">

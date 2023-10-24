@@ -69,7 +69,7 @@ const ForgotPassword = ({ setForgotPassword, setLogin, setSignUp, notification, 
             </div>
             <div class={Style.btn2}>
                 <button
-                    class={Style.button1}
+                    class={Style.button12}
                     onClick={() => (setLogin(true), setForgotPassword(false))}
                 >
                     Login

@@ -109,7 +109,7 @@ const SignUp = ({ setLogin, setSignUp, notification, setNotification }) => {
               </button>
             </div>
             <button class={Style.button3} onClick={(e) => createAccount(e)}>
-              SignUp
+              Sign Up
             </button>
           </form>
         </div>

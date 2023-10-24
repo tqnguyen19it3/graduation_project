@@ -18,7 +18,6 @@ pinata API key:
 
 //////////////////// FIX ///////////////////////////////////
 
-chỉnh lại gd
 làm trang about
 làm trang profile (hiển thị thông tin user, có thể chỉnh sửa thông tin user, hiển thị ds các NFT mà người này tạo)
 search chưa tốt
@@ -26,7 +25,7 @@ search chưa tốt
 tạo NFT mà tài khoản k có đủ tiền -> lỗi ở console (chưa xử lý chặn hành vi/hiển thị cụ thể, chỉ hiển thị tạm bằng alert)
 chưa connect ví mà donate hay donate quá tiền có trong ví -> lỗi ở console (chưa xử lý chặn hành vi cụ thể, chỉ hiển thị tạm bằng alert)
 
-chưa xử lý trang detail NFT khi cố tình truy cập vào trang NFT không tồn tại
+chưa xử lý trang detail NFT khi cố tình truy cập vào trang NFT không tồn tại (tạm thời đưa ra dòng chữ NFT NOT FOUND, cần đưa ra trang lỗi cụ thể)
 
 //////////////////// NOTE ///////////////////////////////////
 xóa token ở cookie (ko cần thiết vì đang dùng HttpOnly: true ở server, mà chức năng logout chỉ thực hiện ở client)

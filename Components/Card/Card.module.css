@@ -12,7 +12,7 @@
 }
 
 .number {
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #f89b29 20%, #483D8B 100%);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     margin-left: 1rem;
@@ -46,7 +46,7 @@
     font-weight: 600;
     border: none;
     cursor: pointer;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #f89b29 20%, #483D8B 100%);
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -58,7 +58,7 @@
     bottom: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #483D8B 30%, #32CD32 100%);
     z-index: -1;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -71,9 +71,14 @@
     box-shadow: none;
 }
 
+.card:hover .number {
+    color: #212121;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+}
+
 .card:hover .btn {
     color: #212121;
-    background: #e8e8e8;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
 }
 
 .content .btn:hover {

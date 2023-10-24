@@ -80,7 +80,7 @@ const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotifi
             </div>
             <div class={Style.btn2}>
                <button
-                class={Style.button1}
+                class={Style.button12}
                 onClick={() => (setForgotPassword(true), setLogin(false))}
               >
                 Forgot password

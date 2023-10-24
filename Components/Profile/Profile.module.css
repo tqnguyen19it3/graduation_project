@@ -14,7 +14,7 @@
     border-bottom-left-radius: 20px;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #483D8B 30%, #32CD32 100%);
 }
 
 .card span {
@@ -65,7 +65,7 @@
     border-radius: 25px;
     border: none;
     font-weight: bold;                                            
-    background: linear-gradient (-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: #f89b29;
     color: rgb(0, 0, 0);
     transition: 0.4s ease-in-out;
 }

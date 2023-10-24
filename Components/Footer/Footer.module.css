@@ -11,13 +11,13 @@
 
 .footer_box_social_info {
     margin-top: 3rem;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: #f89b29;
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
 }
 
 .footer_social_icon {
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #483D8B 10%, #f89b29 100%);
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
 }
@@ -55,7 +55,7 @@
 
 .footer_box_help,
 .subscribe h3 {
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: #f89b29;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -70,7 +70,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #483D8B 10%, #f89b29 100%);
     color: #fff;
     border-radius: 5rem;
     margin-top: 3rem;  
@@ -95,7 +95,7 @@
 
 .subscribe_box_info {
     padding: 1rem 1rem;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: #f89b29;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -106,6 +106,10 @@
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
     }
+    .footer_box_social a {
+        display: grid;
+        justify-content: center; 
+    }
 }
 
 @media screen and (max-width: 45em) {
@@ -113,12 +117,20 @@
         width: 90%;
         grid-template-columns: 1fr 2fr;
     }
+    .footer_box_social a {
+        display: grid;
+        justify-content: center; 
+    }
 }
 
 @media screen and (max-width: 35em) {
     .footer_box {
         width: 90%;
         grid-template-columns: 1fr;
+    }
+    .footer_box_social a {
+        display: grid;
+        justify-content: center; 
     }
 }
 

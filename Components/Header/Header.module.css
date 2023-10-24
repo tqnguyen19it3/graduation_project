@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #f89b29 20%, #483D8B 100%);
     padding: 1rem 2rem;
     border-radius: 0.5rem;
     margin-bottom: 4rem;
@@ -42,6 +42,10 @@
         justify-content: center;
         gap: 2rem;
     }
+    .Header a {
+        display: grid;
+        justify-content: center; 
+    }
     .menu {
         display: flex;
         gap: 0.5rem;
@@ -59,6 +63,10 @@
         display: grid;
         justify-content: center;
         gap: 2rem;
+    }
+    .Header a {
+        display: grid;
+        justify-content: center; 
     }
     .menu {
         display: flex;

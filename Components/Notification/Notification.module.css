@@ -1,6 +1,6 @@
 .alert {
     padding: 20px;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    background: linear-gradient(-45deg, #483D8B 10%, #f89b29 100%);
     color: white;
     position: fixed;
     top: 12rem;

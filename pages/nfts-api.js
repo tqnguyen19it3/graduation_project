@@ -38,11 +38,18 @@ const nftsAPI = () => {
       endpoint: "http://localhost:3000/api/v1/user/login",
     },
     {
-      title: "SignUp EndPoint",
+      title: "Sign Up EndPoint",
       description:
-        "Allow api user to use the NFTS API for creating account, to signup user ",
+        "Allow api user to use the NFTS API for creating account, to signup user",
       method: "POST",
       endpoint: "http://localhost:3000/api/v1/user/signup",
+    },
+    {
+      title: "Forgot Password EndPoint",
+      description:
+        "Allow api users to use it to retrieve forgotten passwords",
+      method: "POST",
+      endpoint: "http://localhost:3000/api/v1/user/forgot-password",
     },
   ];
 
