@@ -17,6 +17,13 @@
 .link {
     text-decoration: none;
     color: #fff;
+    cursor: grab;
+}
+
+.Header .menu a {
+    text-decoration: none;
+    color: #fff;
+    cursor: grab;
 }
 
 .form {

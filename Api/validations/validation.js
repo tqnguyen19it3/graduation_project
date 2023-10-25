@@ -26,6 +26,15 @@ const userForgetPasswordValidate = (data) => {
     return userSchema.validate(data);
 }
 
+const userChangePasswordValidate = (data) => {
+    const userSchema = Joi.object({
+        currentPassword: Joi.string().min(6).required(),
+        newPassword: Joi.string().min(6).required(),
+        passwordConfirm: Joi.string().valid(Joi.ref('newPassword')).required(),
+    });
+    return userSchema.validate(data);
+};
+
 const userCreateNFTValidate = (data) => {
     const nftSchema = Joi.object({
         title: Joi.string().required(),
@@ -42,5 +51,6 @@ module.exports = {
     userRegisterValidate,
     userLoginValidate,
     userForgetPasswordValidate,
+    userChangePasswordValidate,
     userCreateNFTValidate
 }

@@ -36,6 +36,7 @@ const SignUp = ({ setLogin, setSignUp, notification, setNotification }) => {
       if(response.data.status == "success") {
         setNotification("Account is successfully created");
         localStorage.setItem("NFTApi_Token", response.data.token);
+        localStorage.setItem("NFTApi_UserData", JSON.stringify(response.data.data.user));
         setSignUp(false);
         window.location.reload();
       } else {

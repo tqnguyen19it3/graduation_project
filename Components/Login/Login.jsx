@@ -32,6 +32,7 @@ const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotifi
       if(response.data.status == "success"){
         setNotification("You have successfully login");
         localStorage.setItem("NFTApi_Token", response.data.token);
+        localStorage.setItem("NFTApi_UserData", JSON.stringify(response.data.data.user));
         setLogin(false);
         window.location.reload();
       } else {

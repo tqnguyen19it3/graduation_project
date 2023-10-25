@@ -18,7 +18,7 @@ pinata API key:
 
 //////////////////// FIX ///////////////////////////////////
 
-làm trang about
+làm trang about (chỉnh lại nội dung hiển thị)
 làm trang profile (hiển thị thông tin user, có thể chỉnh sửa thông tin user, hiển thị ds các NFT mà người này tạo)
 search chưa tốt
 

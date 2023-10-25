@@ -11,7 +11,7 @@ const Card = ({ setNotification, image, index }) => {
                     <p>
                         <img
                             className= {Style.image}
-                            src={image.image}
+                            src={image.image != 'https://gateway.pinata.cloud/ipfs/$(response.data.IpfsHash}' ? image.image : 'https://i.pinimg.com/564x/00/d2/47/00d247ab46fcf887dcebd874b8bba824.jpg'}
                             alt="image"
                             width={250}
                             height={200}

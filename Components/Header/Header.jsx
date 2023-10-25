@@ -23,6 +23,16 @@ const Header = ({ notification, setNotification }) => {
   const [login, setLogin] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [token, setToken] = useState("");
+  const [user, setUserData] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDropdownOpen(false);
+  };
 
   const openModel = (el) => {
     if(el == "Login") {
@@ -39,11 +49,14 @@ const Header = ({ notification, setNotification }) => {
   
   useEffect(() => {
     const token = localStorage.getItem("NFTApi_Token");
+    const user = localStorage.getItem("NFTApi_UserData");
     setToken(token);
+    setUserData(JSON.parse(user));
   }, []);
 
   const logout = () => {
     localStorage.removeItem("NFTApi_Token");
+    localStorage.removeItem("NFTApi_UserData");
     window.location.reload();
   };
 
@@ -58,7 +71,23 @@ const Header = ({ notification, setNotification }) => {
             </Link>
           ))}
           {token ? (
-            <p onClick={() => logout()}>Logout</p>
+            <>
+              <div>
+                <p
+                  onMouseEnter={handleMouseEnter}
+                >
+                  {user.name}
+                </p>
+                {isDropdownOpen && (
+                  <div
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <p><a href={`/profile/${user._id}`}>Profile</a></p>
+                    <p onClick={() => logout()}>Logout</p>
+                  </div>
+                )}
+              </div>
+            </>
           ) : (
             <>
               <p onClick={() => openModel("Login")}>Login</p>

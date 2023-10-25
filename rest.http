@@ -18,12 +18,34 @@ Content-Type: application/json
 
 
 ###
+POST http://localhost:3000/api/v1/user/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "123456"
+}
+
+
+###
 POST http://localhost:3000/api/v1/user/forgot-password
 Content-Type: application/json
 
 {
     "email": "rumtqn@gmail.com"
 }
+
+
+###
+PUT http://localhost:3000/api/v1/user/change-password/65391f832a9dad1240845cd8
+Content-Type: application/json
+
+{
+    "currentPassword": "12345678",
+    "newPassword": "123456",
+    "passwordConfirm": "123456"
+}
+
 
 ###
 POST http://localhost:3000/api/v1/NFTs/
