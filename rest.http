@@ -2,18 +2,14 @@ GET http://localhost:3000/
 
 
 ###
-GET http://localhost:3000/api/v1/NFTs
-
-
-###
 POST http://localhost:3000/api/v1/user/singup
 Content-Type: application/json
 
 {
     "name": "tqnguyen",
-    "email": "tqnguyen259@gmail.com",
-    "password": "12345",
-    "passwordConfirm": "12345"
+    "email": "rumtqn@gmail.com",
+    "password": "123456",
+    "passwordConfirm": "123456"
 }
 
 
@@ -37,14 +33,36 @@ Content-Type: application/json
 
 
 ###
+GET http://localhost:3000/api/v1/user/user-profile/65391f832a9dad1240845cd8
+
+
+###
+PUT http://localhost:3000/api/v1/user/change-profile-info/65391f832a9dad1240845cd8
+Content-Type: application/json
+
+{
+    "name": "administrator",
+    "email": "admin@gmail.com"
+}
+
+
+###
 PUT http://localhost:3000/api/v1/user/change-password/65391f832a9dad1240845cd8
 Content-Type: application/json
 
 {
-    "currentPassword": "12345678",
+    "currentPassword": "1234567",
     "newPassword": "123456",
     "passwordConfirm": "123456"
 }
+
+
+###
+GET http://localhost:3000/api/v1/NFTs/nft-created-by-user/653921772a9dad1240845ceb
+
+
+###
+GET http://localhost:3000/api/v1/NFTs/
 
 
 ###

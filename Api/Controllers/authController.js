@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const User = require("../Models/userModel");
-const { userRegisterValidate, userLoginValidate, userForgetPasswordValidate, userChangePasswordValidate} = require('../validations/validation');
+const { userRegisterValidate, userLoginValidate, userForgetPasswordValidate } = require('../validations/validation');
 const { sendMailCreateAccount, sendMailForgetPassword } = require('../helpers/sendMail');
 const { generateRandomPassword } = require('../helpers/generatePassword');
 
@@ -36,69 +36,79 @@ const createSendToken = (user, statusCode, req, res) => {
 
 // [POST] / CREATE ACCOUNT
 exports.signUp = async (req, res, next) => {
-    const { name, email, password, passwordConfirm } = req.body;
+    try {
+        const { name, email, password, passwordConfirm } = req.body;
 
-    const { error } = userRegisterValidate(req.body);
-    if(error){
-        return res.status(400).json({
-            status: 'fail',
-            message: error.details[0].message,
+        const { error } = userRegisterValidate(req.body);
+        if(error){
+            return res.status(400).json({
+                status: 'fail',
+                message: error.details[0].message,
+            });
+        }
+    
+        // check email exits
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(409).json({
+                status: "fail",
+                message: `Create account failed! ${email} already exists`,
+            });
+        }
+    
+        // store 1 user in mongodb
+        const newUser = await User.create({
+            name,
+            email,
+            password,
+            passwordConfirm
         });
+    
+        // send mail to user
+        await sendMailCreateAccount(
+            email,
+            name,
+            "Create account",
+            password,
+            `<p>Your email is: ${email}</p><p>Your password is: ${password}</p>`
+        );
+    
+        //Everything ok, send token to client
+        createSendToken(newUser, 201, req, res);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ status: 'fail', error: 'Internal server error' });
     }
-
-    // check email exits
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-        return res.status(409).json({
-            status: "fail",
-            message: `Create account failed! ${email} already exists`,
-        });
-    }
-
-    // store 1 user in mongodb
-    const newUser = await User.create({
-        name,
-        email,
-        password,
-        passwordConfirm
-    });
-
-    // send mail to user
-    await sendMailCreateAccount(
-        email,
-        name,
-        "Create account",
-        password,
-        `<p>Your email is: ${email}</p><p>Your password is: ${password}</p>`
-    );
-
-    //Everything ok, send token to client
-    createSendToken(newUser, 201, req, res);
 };
 
 // [POST] / LOGIN ACCOUNT
 exports.login = async (req, res, next) => {
-    const { email, password } = req.body;
+    try {
+        const { email, password } = req.body;
 
-    const { error } = userLoginValidate(req.body);
-    if(error){
-        return res.status(400).json({
-            status: 'fail',
-            message: error.details[0].message,
-        });
+        const { error } = userLoginValidate(req.body);
+        if(error){
+            return res.status(400).json({
+                status: 'fail',
+                message: error.details[0].message,
+            });
+        }
+
+        //Check if user exists && password is correct
+        const user = await User.findOne({ email }).select("+password");
+        if (!user || !(await user.correctPassword(password, user.password))){
+            return res.status(401).json({
+                status: "fail",
+                message: "Incorrect email or password",
+            });
+        }
+
+        //Everything ok, send token to client
+        createSendToken(user, 200, req, res);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ status: 'fail', error: 'Internal server error' });
     }
-
-    //Check if user exists && password is correct
-    const user = await User.findOne({ email }).select("+password");
-    if (!user || !(await user.correctPassword(password, user.password))){
-        return res.status(401).json({
-            status: "fail",
-            message: "Incorrect email or password",
-        });
-    }
-
-    //Everything ok, send token to client
-    createSendToken(user, 200, req, res);
 };
 
 // [POST] / GET PASSWORD WHEN FORGOT
@@ -142,54 +152,7 @@ exports.forgotPassword = async (req, res, next) => {
         
     } catch (error) {
         console.log(error);
+        res.status(500).json({ status: 'fail', error: 'Internal server error' });
     }
 };
-
-// [PUT] / CHANGE PASSWORD
-exports.changePassword = async (req, res, next) =>{
-    try {
-
-        const { currentPassword, newPassword } = req.body;
-
-        const { error } = userChangePasswordValidate(req.body);
-        if(error){
-            return res.status(400).json({
-                status: 'fail',
-                message: error.details[0].message,
-            });
-        }
-        // check user exits
-        const user = await User.findById(req.params.id);
-        if (!user) {
-            return res.status(404).json({
-                status: 'fail',
-                message: "This user could not be found", 
-            });
-        }
-
-        //check password
-        const isPassValid = await bcrypt.compareSync(currentPassword, user.password);
-        if(!isPassValid){
-            return res.status(400).json({
-                status: 'fail',
-                message: "Your current password does not match", 
-            });
-        }
-
-        const hashedPassword = await bcrypt.hash(newPassword, 12);
-        console.log(newPassword);
-        console.log(hashedPassword);
-
-        // update new password in db
-        await User.updateOne({ _id: req.params.id }, { password: hashedPassword });
-
-        return res.status(200).json({
-            status: "success",
-            message: "Password changed successfully",
-        });
-
-    } catch (error) {
-        console.log(error);
-    }
-}
    

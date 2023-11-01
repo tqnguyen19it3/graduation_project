@@ -22,6 +22,9 @@ làm trang about (chỉnh lại nội dung hiển thị)
 làm trang profile (hiển thị thông tin user, có thể chỉnh sửa thông tin user, hiển thị ds các NFT mà người này tạo)
 search chưa tốt
 
+khi cập nhật user info, chú ý cái localstorage
+xử lý quyền người dùng này k có quyền truy cập/cập nhật profile/password của người khác
+
 tạo NFT mà tài khoản k có đủ tiền -> lỗi ở console (chưa xử lý chặn hành vi/hiển thị cụ thể, chỉ hiển thị tạm bằng alert)
 chưa connect ví mà donate hay donate quá tiền có trong ví -> lỗi ở console (chưa xử lý chặn hành vi cụ thể, chỉ hiển thị tạm bằng alert)
 

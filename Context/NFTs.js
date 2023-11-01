@@ -159,7 +159,7 @@ export const StateContextProvider = ({ children }) => {
     const getSingleNftsAPI = async (id) => {
         const response = await axios({
             method: "GET",
-            url: `/api/v1/NFTs${id}`,
+            url: `/api/v1/NFTs/${id}`,
         });
         console.log(response);
     };
