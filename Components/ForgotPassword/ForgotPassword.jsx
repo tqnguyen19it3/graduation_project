@@ -27,7 +27,6 @@ const ForgotPassword = ({ setForgotPassword, setLogin, setSignUp, notification, 
           email: user.email
         },
       });
-      console.log("haha: ", response);
       if(response.data.status == "success"){
         setNotification(response.data.message);
         setForgotPassword(false);

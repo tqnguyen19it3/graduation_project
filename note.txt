@@ -16,6 +16,11 @@ pinata API key:
 
     -JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwMGQwZDdhMy1lYjEyLTRjNDAtYWVkNi0wNDIxMGYyZGQ5NDMiLCJlbWFpbCI6InRxbmd1eWVuLjE5aXQzQHNpY3QudWRuLnZuIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjNiMTY5N2I0MmQ1ODU5ZDZhNDJmIiwic2NvcGVkS2V5U2VjcmV0IjoiZGNmY2IzMTU0ZjUyYmE5MmY4ODEzYjlhMmVlMjljMjM2MjYxZGYzZGUzOTYyNWUxNzE0NGY4NGM0ZmJiOGEwZiIsImlhdCI6MTY5NjcwMjc0Mn0.O2SDanzp-i2vYSXY1y4Mk1Z1pq7PmNuAwC7BBwOuMJ0
 
+pages/index.js
+context/NFTs.js
+hardhat.config.js
+nftsIPFS.sol
+
 //////////////////// FIX ///////////////////////////////////
 
 làm trang about (chỉnh lại nội dung hiển thị)

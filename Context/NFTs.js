@@ -71,8 +71,6 @@ export const StateContextProvider = ({ children }) => {
                 },
             });
 
-            console.log(response);
-            console.info("contract call success", createNFTs);
             setLoading(false);
             window.location.reload();
         } catch (err) {
@@ -133,11 +131,9 @@ export const StateContextProvider = ({ children }) => {
     //DONATE
     const donateFund = async ({ amount, Id }) => {
         try {
-            console.log(amount, Id);
             const transaction = await contract.call("donateToImage", [Id], {
                 value: amount.toString(),
             }); 
-            console.log(transaction);
             window.location.reload();
         } catch (error) {
             console.log(error);
@@ -152,7 +148,6 @@ export const StateContextProvider = ({ children }) => {
             method: "GET",
             url: "/api/v1/NFTs",
         });
-        console.log(response);
     };
        
     // SINGLE NFT API
@@ -161,8 +156,8 @@ export const StateContextProvider = ({ children }) => {
             method: "GET",
             url: `/api/v1/NFTs/${id}`,
         });
-        console.log(response);
     };
+
 
     return (
         <StateContext.Provider

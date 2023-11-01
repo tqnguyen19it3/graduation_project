@@ -25,17 +25,19 @@ const imageDetail = () => {
   //URL QUERY
   const router = useRouter();
   const { query } = router;
-  const [allImages, setAllImages] = useState([]);
   const [notification, setNotification] = useState("");
   const [support, setSupport] = useState("");
   const [image, setImage] = useState();
+  const [otherImages, setOtherImages] = useState([]);
 
   const fetchImages = async () => {
     const oneImage = await singleImage(query.image * 1);
     const images = await getUploadedImages() ;
-    setAllImages(images);
     setImage(oneImage);
-    console.log(oneImage);
+    const otherImg = images.filter((item) =>{
+      return item.imageID !== (query.image * 1);
+    });
+    setOtherImages(otherImg);
   }
   useEffect(() => {
     if (contract) fetchImages();
@@ -53,25 +55,25 @@ const imageDetail = () => {
     <div className="home">
       <Header notification={notification} setNotification={setNotification} />
         {image == undefined ? (
-        <Logo />
-      ) : (
-        <Product
-          setLoading={setLoading}
-          donateAmount={donateAmount}
-          setNotification={setNotification}
-          setSupport={setSupport}
-          image={image}
-        />
-      )}
+          <Logo />
+        ) : (
+          <Product
+            setLoading={setLoading}
+            donateAmount={donateAmount}
+            setNotification={setNotification}
+            setSupport={setSupport}
+            image={image}
+          />
+        )}
       <div className="card">
-        {allImages.map((image, i) => (
+        {otherImages.map((image, i) => (
           <Card
             key={i + 1}
             index={i}
             image={image}
             setNotification={setNotification}
           />
-        )).slice(0, 8)}
+        ))}
       </div>
       <Footer />
 

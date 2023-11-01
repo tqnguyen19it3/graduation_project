@@ -56,7 +56,7 @@ const Footer = () => {
 
           <div className={Style.subscribe_box}>
             <input type="email" placeholder="Enter your email *" />
-            <RiSendPlaneFill className={Style.subscribe_box_send} />
+            <RiSendPlaneFill className={Style.subscribe_box_send} onClick={() => window.location = 'mailto:tqnguyen.19it3@vku.udn.vn'}/>
           </div>
           <div className={Style.subscribe_box_info}>
             <p>
