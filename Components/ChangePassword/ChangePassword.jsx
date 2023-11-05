@@ -3,12 +3,18 @@ import axios from "axios";
 import { Lock } from "../SVG/index";
 import Style from "./ChangePassword.module.css";
 import { Notification } from "../index";
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 
 const ChangePassword = ({
   setChangePassword,
   notification,
   setNotification,
 }) => {
+
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const NFTApi_Token = localStorage.getItem("NFTApi_Token");
 
   //API ChangePassword
@@ -72,29 +78,47 @@ const ChangePassword = ({
             <div class={Style.field}>
               <Lock styleClass={Style.input_icon} />
               <input
-                type="password"
+                type={showCurrentPassword ? 'text' : 'password'}
                 class={Style.input_field}
                 placeholder="Current password"
                 onChange={(e) => handleFormFieldChange("currentPassword", e)}
               />
+              <button class={Style.show_password_button} onClick={(e) => {
+                e.preventDefault();
+                setShowCurrentPassword(!showCurrentPassword);
+              }}>
+                {showCurrentPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+              </button>
             </div>
             <div class={Style.field}>
               <Lock styleClass={Style.input_icon} />
               <input
-                type="password"
+                type={showNewPassword ? 'text' : 'password'}
                 class={Style.input_field}
                 placeholder="New password"
                 onChange={(e) => handleFormFieldChange("newPassword", e)}
               />
+              <button class={Style.show_password_button} onClick={(e) => {
+                e.preventDefault();
+                setShowNewPassword(!showNewPassword);
+              }}>
+                {showNewPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+              </button>
             </div>
             <div class={Style.field}>
               <Lock styleClass={Style.input_icon} />
               <input
-                type="password"
+                type={showConfirmPassword ? 'text' : 'password'}
                 class={Style.input_field}
                 placeholder="Password confirm"
                 onChange={(e) => handleFormFieldChange("passwordConfirm", e)}
               />
+              <button class={Style.show_password_button} onClick={(e) => {
+                e.preventDefault();
+                setShowConfirmPassword(!showConfirmPassword);
+              }}>
+                {showConfirmPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+              </button>
             </div>
             <div class={Style.btn}>
               <button

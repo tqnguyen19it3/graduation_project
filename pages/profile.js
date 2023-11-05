@@ -62,7 +62,7 @@ const Profile = () => {
   return (
     <div className="home">
       <Helmet>
-        <title>Profile</title>
+        <title>User Profile</title>
       </Helmet>
       <Header notification={notification} setNotification={setNotification} />
       {token ? (

@@ -3,8 +3,12 @@ import axios from "axios";
 import { FormSVG, Lock } from "../SVG/index";
 import Style from "./Login.module.css";
 import { Notification } from "../index";
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 
 const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotification }) => {
+
+  const [showPassword, setShowPassword] = useState(false);
+
   //API LOGIN
   const [user, setUser] = useState({
     email: "",
@@ -68,11 +72,17 @@ const Login = ({ setLogin, setSignUp, setForgotPassword, notification, setNotifi
             <div class={Style.field}>
               <Lock styleClass={Style.input_icon} />
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 class={Style.input_field}
                 placeholder="Password"
                 onChange={(e) => handleFormFieldChange("password", e)}
               />
+              <button class={Style.show_password_button} onClick={(e) => {
+                e.preventDefault();
+                setShowPassword(!showPassword);
+              }}>
+                {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+              </button>
             </div>
             <div class={Style.btn}>
               <button class={Style.button1} onClick={() => setLogin(false)}>

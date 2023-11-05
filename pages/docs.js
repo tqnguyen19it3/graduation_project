@@ -5,7 +5,7 @@ import { Header, Footer, Notification, Logo } from "../Components";
 import { useStateContext } from "../Context/NFTs";
 import images from "../Components/Image/technology/index";
 
-const about = () => {
+const Docs = () => {
   //STATE VARIABLE
   const { loading } = useStateContext();
   const [notification, setNotification] = useState("");
@@ -13,11 +13,11 @@ const about = () => {
   return (
     <div className="home">
       <Helmet>
-        <title>About Page</title>
+        <title>Docs Page</title>
       </Helmet>
       <Header notification={notification} setNotification={setNotification} />
       <div className="header">
-        <h1>About</h1>
+        <h1>Document</h1>
       </div>
       <div className="documentation-page">
         <nav>
@@ -209,4 +209,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default Docs;

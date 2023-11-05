@@ -3,8 +3,13 @@ import axios from "axios";
 import { FormSVG, Lock } from "../SVG/index";
 import Style from "./SignUp.module.css";
 import { Notification } from "../index";
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 
 const SignUp = ({ setLogin, setSignUp, notification, setNotification }) => {
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -83,20 +88,32 @@ const SignUp = ({ setLogin, setSignUp, notification, setNotification }) => {
             <div class={Style.field}>
               <Lock styleClass={Style.input_icon} />
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 class={Style.input_field}
                 placeholder="Password"
                 onChange={(e) => handleFormFieldChange("password", e)}
               />
+              <button class={Style.show_password_button} onClick={(e) => {
+                e.preventDefault();
+                setShowPassword(!showPassword);
+              }}>
+                {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+              </button>
             </div>
             <div class={Style.field}>
               <Lock styleClass={Style.input_icon} />
               <input
-                type="password"
+                type={showConfirmPassword ? 'text' : 'password'}
                 class= {Style.input_field}
                 placeholder="Password confirm"
                 onChange={(e) => handleFormFieldChange("passwordConfirm", e)}
               />
+              <button class={Style.show_password_button} onClick={(e) => {
+                e.preventDefault();
+                setShowConfirmPassword(!showConfirmPassword);
+              }}>
+                {showConfirmPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+              </button>
             </div>
             <div class={Style.btn}>
               <button class={Style.button1} onClick={() => setSignUp(false)}>
