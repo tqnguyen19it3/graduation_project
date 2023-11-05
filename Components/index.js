@@ -12,6 +12,8 @@ import CheckBox from "./CheckBox/CheckBox";
 import Login from "./Login/Login";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import SignUp from "./SignUp/SignUp";
+import ChangePassword from "./ChangePassword/ChangePassword";
+import ChangeProfile from "./ChangeProfile/ChangeProfile";
 import Product from "./Product/Product";
 import Donate from "./Donate/Donate";
 export {
@@ -29,6 +31,8 @@ export {
   Login,
   ForgotPassword,
   SignUp,
+  ChangeProfile,
+  ChangePassword,
   Product,
   Donate,
 };

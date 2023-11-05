@@ -21,101 +21,108 @@ const Product = ({
 
   const [donate, setDonate] = useState(false);
   return (
-    <div className={Style.Product}>
+    <div>
       <Helmet>
         <title>NFT Details</title>
       </Helmet>
       {!image.imageURL ?  (
-        <h1>NFT NOT FOUND</h1>
+        <>
+          <div className="containerError">
+            <h2>404 NOT FOUND</h2>
+            <p>Sorry! The NFT you are looking for does not exist</p>
+          </div>
+        </>
       ) : 
       (<>
-      <div className= {Style.image}>
-        <img className={Style.image_img} src={image?.imageURL != 'https://gateway.pinata.cloud/ipfs/$(response.data.IpfsHash}' ? image.imageURL : 'https://i.pinimg.com/564x/00/d2/47/00d247ab46fcf887dcebd874b8bba824.jpg'} alt="image" />
-      </div>
-      <div className={Style.detail}>
-        <div className={Style.detail_box}>
-          <h1>{image?.title}</h1>
-          <p>{image?.description}</p>
-          <p className={Style.info}>
-            <span>Category: {image?.category}</span> {""}{" "}
-            <span>Image ID: #{image?.imageId}</span> {""}{" "}
-            <span>
-              CreatedAt: {new Date(image?.createdAt * 1000).toDateString()}
-            </span>
-          </p>
-          <p className={Style.info}>
-            <span>
-              Donation: {""} {image?.fundRaised} MATIC
-            </span>{" "}
-          </p>
-          <p>Contact Creator: {image?.email}</p>
-            <span class= {Style.para}>
-              <Image
-                className="avatar_img"
-                src={client[`client${1}`]}
-                width={40}
-                height={40}
-                alt="image"
-              />
-              <small
-                className={Style.para_small}
+        <div className={Style.Product}>
+          <div className= {Style.image}>
+            <img className={Style.image_img} src={image?.imageURL != 'https://gateway.pinata.cloud/ipfs/$(response.data.IpfsHash}' ? image.imageURL : 'https://i.pinimg.com/564x/00/d2/47/00d247ab46fcf887dcebd874b8bba824.jpg'} alt="image" />
+          </div>
+          <div className={Style.detail}>
+            <div className={Style.detail_box}>
+              <h1>{image?.title}</h1>
+              <p>{image?.description}</p>
+              <p className={Style.info}>
+                <span>Category: {image?.category}</span> {""}{" "}
+                <span>Image ID: #{image?.imageId}</span> {""}{" "}
+                <span>
+                  CreatedAt: {new Date(image?.createdAt * 1000).toDateString()}
+                </span>
+              </p>
+              <p className={Style.info}>
+                <span>
+                  Donation: {""} {image?.fundRaised} MATIC
+                </span>{" "}
+              </p>
+              <p>Contact Creator: {image?.email}</p>
+                <span class= {Style.para}>
+                  <Image
+                    className="avatar_img"
+                    src={client[`client${1}`]}
+                    width={40}
+                    height={40}
+                    alt="image"
+                  />
+                  <small
+                    className={Style.para_small}
+                    onClick={() => (
+                      setNotification("The wallet address has been copied successfully"),
+                      navigator.clipboard.writeText(image?.creator)
+                    )}
+                  >
+                    {image?.creator.slice(0, 30)}..
+                  </small>
+                </span>
+              </div>
+              <button
                 onClick={() => (
-                  setNotification("The wallet address has been copied successfully"),
-                  navigator.clipboard.writeText(image?.creator)
+                  setNotification("The image URL has been copied successfully"),
+                  navigator.clipboard.writeText(image?.imageURL)
                 )}
+                class={BTNStyle.button}
               >
-                {image?.creator.slice(0, 30)}..
-              </small>
-            </span>
+                <span class={`${BTNStyle.button_content} ${Style.btn}`}>
+                  Copy URL{" "}
+                </span>
+              </button>
+              {/* //DOWNLOAD */}
+              <span className={Style.space}></span>
+              <button
+                onClick={() =>
+                  navigator.clipboard.writeText(
+                    setNotification("Thanks for downloading")
+                  )
+                }
+                class={BTNStyle.button}
+              >
+                <span
+                  onClick={handleClick}
+                  class={`${BTNStyle.button_content} ${Style.btn}`}
+                >
+                  Download Image{" "}
+                </span>
+              </button>
+              {/* //DONATE */}
+              <span className={Style.space}></span>
+              <button onClick={() => setDonate(true)} class={BTNStyle.button}>
+                <span class={`${BTNStyle.button_content} ${Style.btn}`}>Donate </span>
+              </button>
           </div>
-          <button
-            onClick={() => (
-              setNotification("The image URL has been copied successfully"),
-              navigator.clipboard.writeText(image?.imageURL)
-            )}
-            class={BTNStyle.button}
-          >
-            <span class={`${BTNStyle.button_content} ${Style.btn}`}>
-              Copy URL{" "}
-            </span>
-          </button>
-          {/* //DOWNLOAD */}
-          <span className={Style.space}></span>
-          <button
-            onClick={() =>
-              navigator.clipboard.writeText(
-                setNotification("Thanks for downloading")
-              )
-            }
-            class={BTNStyle.button}
-          >
-            <span
-              onClick={handleClick}
-              class={`${BTNStyle.button_content} ${Style.btn}`}
-            >
-              Download Image{" "}
-            </span>
-          </button>
-          {/* //DONATE */}
-          <span className={Style.space}></span>
-          <button onClick={() => setDonate(true)} class={BTNStyle.button}>
-            <span class={`${BTNStyle.button_content} ${Style.btn}`}>Donate </span>
-          </button>
-      </div>
-      </>)}
-        {donate && (
-          <div className="form">
-            <div className="form_inner">
-              <Donate
-                setLoading={setLoading}
-                donateAmount={donateAmount}
-                setDonate={setDonate}
-                setSupport={setSupport}
-              />
+          {donate && (
+            <div className="form">
+              <div className="form_inner">
+                <Donate
+                  setLoading={setLoading}
+                  donateAmount={donateAmount}
+                  setDonate={setDonate}
+                  setSupport={setSupport}
+                />
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </>)}
+    </div>
   );
 };
 

@@ -1,42 +1,59 @@
 import React, { useState, useEffect } from "react";
-import { Header, Footer, Notification, Logo, Card } from "../Components";
+import {
+  Header,
+  Footer,
+  Notification,
+  Logo,
+  Card,
+  ChangeProfile,
+  ChangePassword,
+} from "../Components";
 import { useStateContext } from "../Context/NFTs";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 import images from "../Components/Image/client/index";
 import Image from "next/image";
 import axios from "axios";
 
 const Profile = () => {
-
   //STATE VARIABLE
   const { loading, address, contract, getUploadedImages } = useStateContext();
   const [notification, setNotification] = useState("");
   const [createdByUserImages, setCreatedByUserImages] = useState([]);
+  const [token, setToken] = useState("");
   const [userData, setUserData] = useState("");
-
-  //GET API DATA CREATED BY USER
-  // const getAllNftsCreatedByUserAPI = async (id) => {
-  //   const response = await axios({
-  //       method: "GET",
-  //       url: `/api/v1/NFTs/nft-created-by-user/${id}`,
-  //   });
-  //   return response.data.data.NFTCreatedByUser;
-  // };
+  const [changeProfile, setChangeProfile] = useState(false);
+  const [changePassword, setChangePassword] = useState(false);
 
   useEffect(() => {
+    const NFTApi_Token = localStorage.getItem("NFTApi_Token");
+    setToken(NFTApi_Token);
     const fetchData = async () => {
       try {
-        // const imageByUser = await getAllNftsCreatedByUserAPI("6532b27dd90a2c0f78c454d2");
-        const user = JSON.parse(localStorage.getItem("NFTApi_UserData"));
-        setUserData(user);
-        const allImage = await getUploadedImages();
-        const imageCreatedByUser = allImage.filter((item) =>{
-          return item.email === user.email;
-        });
-        setCreatedByUserImages(imageCreatedByUser);
+        if (NFTApi_Token) {
+          const headers = {
+            Authorization: `Bearer ${NFTApi_Token}`,
+          };
+          const response = await axios.get(`/api/v1/user/user-profile/`, {
+            headers,
+          });
+          if (response.data.status == "success") {
+            setUserData(response.data.data.user);
+            const allImage = await getUploadedImages();
+            const imageCreatedByUser = allImage.filter((item) => {
+              return item.email === response.data.data.user.email;
+            });
+            setCreatedByUserImages(imageCreatedByUser);
+          } else {
+            setNotification("Something went wrong, try again later");
+          }
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
-        alert("Something went wrong!");
+        if (error.response) {
+          setNotification(error.response.data.message);
+        } else {
+          setNotification("An error occurred. Please try again.");
+        }
       }
     };
     if (contract) fetchData();
@@ -48,37 +65,80 @@ const Profile = () => {
         <title>Profile</title>
       </Helmet>
       <Header notification={notification} setNotification={setNotification} />
-      <div className="header">
-        <h1>User Information</h1>
-      </div>
-      <div className="cardProfile">
-        <Image
-          className="avatar_img"
-          src={images.client1}
-          alt="avatar"
-        />
-        <h4>Username: {userData.name}</h4>
-        <h4>Email: {userData.email}</h4>
-        <h4>Role: {userData.role}</h4>
-        <p>About: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum et explicabo consectetur, saepe optio obcaecati repellat labore inventore pariatur corporis nam, officia nobis sit id molestiae ducimus fugit, distinctio non!</p>
-        <div style={{display: "inline-flex"}}>
-          <button>Change Profile</button>
-          <button>Change Password</button>
+      {token ? (
+        <>
+          <div className="header">
+            <h1>User Information</h1>
+          </div>
+          <div className="cardProfile">
+            <Image className="avatar_img" src={images.client1} alt="avatar" />
+            <h4>Username: {userData.name}</h4>
+            <h4>Email: {userData.email}</h4>
+            <h4>Role: {userData.role}</h4>
+            <div style={{ display: "inline-flex" }}>
+              <button onClick={() => setChangeProfile(true)}>
+                Change Profile
+              </button>
+              <button onClick={() => setChangePassword(true)}>
+                Change Password
+              </button>
+            </div>
+          </div>
+          <div className="header">
+            <h1>Owned NFTs</h1>
+          </div>
+          {createdByUserImages.length > 0 ? (
+            <div className="card">
+              {createdByUserImages.map((image, i) => (
+                <Card
+                  key={i + 1}
+                  index={i}
+                  image={image}
+                  setNotification={setNotification}
+                />
+              ))}
+            </div>
+          ) : (
+            <h3>Currently you do not own any NFTs</h3>
+          )}
+        </>
+      ) : (
+        <>
+          <div className="containerError">
+            <h2>401 Unauthorized</h2>
+            <p>
+              Sorry! The page you are trying to access requires authentication
+            </p>
+          </div>
+        </>
+      )}
+
+      {/* ChangeProfile */}
+      {changeProfile && (
+        <div className="form">
+          <div className="form_inner">
+            <ChangeProfile
+              setChangeProfile={setChangeProfile}
+              notification={notification}
+              setNotification={setNotification}
+            />
+          </div>
         </div>
-      </div>
-      <div className="header">
-        <h1>Owned NFTs</h1>
-      </div>
-      <div className="card">
-        {createdByUserImages.map((image, i) => (
-          <Card
-            key={i + 1}
-            index={i}
-            image={image}
-            setNotification={setNotification}
-          />
-        ))}
-      </div>
+      )}
+
+      {/* ChangePassword */}
+      {changePassword && (
+        <div className="form">
+          <div className="form_inner">
+            <ChangePassword
+              setChangePassword={setChangePassword}
+              notification={notification}
+              setNotification={setNotification}
+            />
+          </div>
+        </div>
+      )}
+
       {/* //NOTIFICATION */}
       {notification != "" && (
         <Notification
@@ -86,6 +146,7 @@ const Profile = () => {
           setNotification={setNotification}
         />
       )}
+      
       {/* //LOADER */}
       {loading && (
         <div className="loader">

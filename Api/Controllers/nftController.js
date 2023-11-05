@@ -17,7 +17,7 @@ exports.getAllNfts = async (req, res, next) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
 
@@ -34,7 +34,7 @@ exports.getNft = async (req, res, next) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
 
@@ -66,7 +66,7 @@ exports.createNft = async (req, res, next) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
 
@@ -74,7 +74,7 @@ exports.createNft = async (req, res, next) => {
 exports.getNftCreatedByUser = async (req, res, next) => {
     try {
         // check user exits
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.userId);
         if (!user) {
             return res.status(404).json({
                 status: 'fail',
@@ -92,6 +92,6 @@ exports.getNftCreatedByUser = async (req, res, next) => {
         });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };

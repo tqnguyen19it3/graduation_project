@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 import Image from "next/image";
 import axios from "axios";
 import {
@@ -49,8 +49,8 @@ const Home = () => {
     setAllImages(images);
     //API NFTS
     const apiImages = await getAllNftsAPI();
-  }
-  useEffect (() => {
+  };
+  useEffect(() => {
     if (contract) fetchImages();
   }, [address, contract]);
 
@@ -59,7 +59,7 @@ const Home = () => {
   } else {
     allImages.map((el) => oldImages.push(el));
   }
-  
+
   //IMAGE DATA
   const [category, setCategory] = useState("");
   const [imageInfo, setImageInfo] = useState({
@@ -72,7 +72,7 @@ const Home = () => {
 
   const handleFormFieldChange = (fieldName, e) => {
     setImageInfo({ ...imageInfo, [fieldName]: e.target.value });
-  }
+  };
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -82,29 +82,34 @@ const Home = () => {
     setCloseForm(false);
     setLoading(true);
     if (
-      !imageInfo.title || !imageInfo.description || !imageInfo.email || !category || !file
-    ){
+      !imageInfo.title ||
+      !imageInfo.description ||
+      !imageInfo.email ||
+      !category ||
+      !file
+    ) {
       setNotification("Please provide all the detail");
-      setTimeout(function(){
+      setTimeout(function () {
         location.reload();
       }, 2000);
     } else {
-      if(!(emailRegex.test(imageInfo.email))){
+      if (!emailRegex.test(imageInfo.email)) {
         setNotification("Please provide a valid email address");
-        setTimeout(function(){
+        setTimeout(function () {
           location.reload();
         }, 2000);
-      }
-      else if(!address){
-        setNotification("This action requires a connected wallet to sign the transaction");
-        setTimeout(function(){
+      } else if (!address) {
+        setNotification(
+          "This action requires a connected wallet to sign the transaction"
+        );
+        setTimeout(function () {
           location.reload();
         }, 3000);
       } else {
-        try{
+        try {
           const formData = new FormData();
           formData.append("file", file);
-  
+
           const response = await axios({
             method: "post",
             url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
@@ -115,10 +120,10 @@ const Home = () => {
               // pinata_api_key: `3b1697b42d5859d6a42f`,
               // pinata_secret_api_key: `dcfcb3154f52ba92f8813b9a2ee29c236261df3de39625e17144f84c4fbb8a0f`,
               "Content-Type": "multipart/form-data",
-            }
+            },
           });
           const image = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
-          
+
           await UploadImage({
             ...imageInfo,
             image: image,
@@ -126,7 +131,7 @@ const Home = () => {
           });
           setFile(null);
         } catch (error) {
-          setNotification("Something went wrong! Please try again");      
+          setNotification("Something went wrong! Please try again");
         }
       }
     }
@@ -175,74 +180,74 @@ const Home = () => {
             algorithms that limit your creative agency.
           </p>
           <div className="avatar">
-              <Button
-                address={address}
-                disconnect={disconnect}
-                connect={connect}
-                file={file}
-              />
-              {address && (
-                <p>
-                  <Image
-                    className="avatar_img"
-                    src= {images.client1}
-                    width={40}
-                    height={40}
-                    alt="image"
-                    onClick={() => setOpenProfile(true)}
-                  />
-                </p>
-              )}
-            </div>
+            <Button
+              address={address}
+              disconnect={disconnect}
+              connect={connect}
+              file={file}
+            />
+            {address && (
+              <p>
+                <Image
+                  className="avatar_img"
+                  src={images.client1}
+                  width={40}
+                  height={40}
+                  alt="image"
+                  onClick={() => setOpenProfile(true)}
+                />
+              </p>
+            )}
           </div>
         </div>
-        <h1 className="subheading">All NFTs of Marketplace</h1>
-        {/* //CARD */}
-        {allImages.length == 0 ? (
-          <Logo />
-        ) : allImages == undefined ? (
-          <h1>No Images</h1>
-        ) : (
-          <>
-            <Filter
-              setImagesCopy={setImagesCopy}
-              imagesCopy={imagesCopy}
-              setAllImages={setAllImages}
-              allImages={allImages}
-              oldImages={oldImages}
-              activeSelect={activeSelect}
-              setActiveSelect={setActiveSelect}
-            />
-            <div className="card">
-              {allImages.map((image, i) => (
-                <Card
-                  key={i + 1}
-                  index={i}
-                  image={image}
-                  setNotification={setNotification}
-                />
-              ))}
-            </div>
-          </>
-        )}
-        <Footer />
-        {/* //NOTIFICATION */}
-        {notification != "" && (
-          <Notification
-            notification={notification}
-            setNotification={setNotification}
+      </div>
+      <h1 className="subheading">All NFTs of Marketplace</h1>
+      {/* //CARD */}
+      {allImages.length == 0 ? (
+        <Logo />
+      ) : allImages == undefined ? (
+        <h1>No Images</h1>
+      ) : (
+        <>
+          <Filter
+            setImagesCopy={setImagesCopy}
+            imagesCopy={imagesCopy}
+            setAllImages={setAllImages}
+            allImages={allImages}
+            oldImages={oldImages}
+            activeSelect={activeSelect}
+            setActiveSelect={setActiveSelect}
           />
-        )}
-        {/* //PROFILE */}
-        {openProfile && (
-          <div className="profile">
-            <Profile
-              setOpenProfile={setOpenProfile}
-              userBalance={userBalance}
-              address={address}
-            />
+          <div className="card">
+            {allImages.map((image, i) => (
+              <Card
+                key={i + 1}
+                index={i}
+                image={image}
+                setNotification={setNotification}
+              />
+            ))}
           </div>
-        )}
+        </>
+      )}
+      <Footer />
+      {/* //NOTIFICATION */}
+      {notification != "" && (
+        <Notification
+          notification={notification}
+          setNotification={setNotification}
+        />
+      )}
+      {/* //PROFILE */}
+      {openProfile && (
+        <div className="profile">
+          <Profile
+            setOpenProfile={setOpenProfile}
+            userBalance={userBalance}
+            address={address}
+          />
+        </div>
+      )}
       {/* //LOADER */}
       {loading && (
         <div className="loader">

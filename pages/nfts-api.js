@@ -12,16 +12,16 @@ const nftsAPI = () => {
     {
       title: "Get All NFTs",
       description:
-        "Welcome to NFTs Api, access to all the nfts uploaded to IPFS, by following the mention steps down below",
+        "Welcome to NFTs API, access to all the nfts uploaded to IPFS, by following the mention steps down below",
       method: "GET",
       endpoint: "http://localhost:3000/api/v1/NFTs",
     },
     {
       title: "Get Single NFTs",
       description:
-        "Single NFTS Api endpoint, get access to single nft uploaded to IPFS, by following the mention steps down below",
+        "Single NFTS API endpoint, get access to single nft uploaded to IPFS, by following the mention steps down below",
       method: "GET",
-      endpoint: "http://localhost:3000/api/v1/NFTs/Id",
+      endpoint: "http://localhost:3000/api/v1/NFTs/:id",
     },
     {
       title: "Create Image Upload",
@@ -31,13 +31,6 @@ const nftsAPI = () => {
       endpoint: "http://localhost:3000/api/v1/NFTs",
     },
     {
-      title: "Login EndPoint",
-      description:
-        "Allow api user to use the NFTs API authentication, to log user in",
-      method: "POST",
-      endpoint: "http://localhost:3000/api/v1/user/login",
-    },
-    {
       title: "Sign Up EndPoint",
       description:
         "Allow api user to use the NFTS API for creating account, to signup user",
@@ -45,11 +38,46 @@ const nftsAPI = () => {
       endpoint: "http://localhost:3000/api/v1/user/signup",
     },
     {
+      title: "Login EndPoint",
+      description:
+        "Allow api users to use NFT API authentication for user login",
+      method: "POST",
+      endpoint: "http://localhost:3000/api/v1/user/login",
+    },
+    {
       title: "Forgot Password EndPoint",
       description:
         "Allow api users to use it to retrieve forgotten passwords",
       method: "POST",
       endpoint: "http://localhost:3000/api/v1/user/forgot-password",
+    },
+    {
+      title: "Get User Profile Information EndPoint",
+      description:
+        "This endpoint will allow you to make a request on the server to get the current authenticated user's information",
+      method: "GET",
+      endpoint: "http://localhost:3000/api/v1/user/user-profile",
+    },
+    {
+      title: "Get All NFTs Created By User",
+      description:
+        "This endpoint will allow you to make a request on the server to receive all NFTs owned by that user",
+      method: "GET",
+      endpoint: "http://lochttp://localhost:3000/api/v1/NFTs/nft-created-by-user/:userId",
+    },
+    {
+      title: "Change User Profile EndPoint",
+      description:
+        "This endpoint will allow you to make requests on the server to change the current authenticated user information",
+      method: "PUT",
+      endpoint: "http://localhost:3000/api/v1/user/change-profile-info",
+    },
+    {
+      title: "Change User Password EndPoint",
+      description:
+        "This endpoint will allow you to make a request on the server to change the password of the current authenticated user",
+      method: "PUT",
+      endpoint: "http://localhost:3000/api/v1/user/change-password",
     },
   ];
 

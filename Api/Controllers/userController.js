@@ -5,8 +5,7 @@ const { userChangePasswordValidate, userChangeProfileInfoValidate } = require('.
 // [GET] / GET USER PROFILE INFO
 exports.userProfile =  async (req, res, next) => {
     try{
-        const userId = req.params.id;
-        const user = await User.findById(userId);
+        const user = await User.findById(req.payload.id);
 
         if (!user) {
             return res.status(404).json({
@@ -14,6 +13,9 @@ exports.userProfile =  async (req, res, next) => {
                 message: "This user profile was not found", 
             });
         }
+
+        // remove password from output
+        user.password = undefined;
 
         return res.status(200).json({
             status: "success",
@@ -24,7 +26,7 @@ exports.userProfile =  async (req, res, next) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
 
@@ -33,7 +35,6 @@ exports.changeProfileInfo = async (req, res, next) =>{
     try {
         const userInfo = { 
             name: req.body.name,
-            email: req.body.email,
         }
 
         const { error } = userChangeProfileInfoValidate(req.body);
@@ -44,7 +45,7 @@ exports.changeProfileInfo = async (req, res, next) =>{
             });
         }
         // check user exits
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.payload.id);
         if (!user) {
             return res.status(404).json({
                 status: 'fail',
@@ -53,11 +54,14 @@ exports.changeProfileInfo = async (req, res, next) =>{
         }
 
         // update db
-        const userData = await User.findOneAndUpdate({ _id: req.params.id }, userInfo, { new: true });
+        const userData = await User.findOneAndUpdate({ _id: req.payload.id }, userInfo, { new: true });
+
+        // remove password from output
+        userData.password = undefined;
 
         return res.status(200).json({
             status: "success",
-            message: "Password changed successfully",
+            message: "User profile information changed successfully",
             data: {
                 userData,
             }
@@ -65,7 +69,7 @@ exports.changeProfileInfo = async (req, res, next) =>{
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
 
@@ -83,7 +87,7 @@ exports.changePassword = async (req, res, next) =>{
             });
         }
         // check user exits
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.payload.id);
         if (!user) {
             return res.status(404).json({
                 status: 'fail',
@@ -103,7 +107,7 @@ exports.changePassword = async (req, res, next) =>{
         const hashedPassword = await bcrypt.hash(newPassword, 12);
 
         // update new password in db
-        await User.updateOne({ _id: req.params.id }, { password: hashedPassword });
+        await User.updateOne({ _id: req.payload.id }, { password: hashedPassword });
 
         return res.status(200).json({
             status: "success",
@@ -112,6 +116,6 @@ exports.changePassword = async (req, res, next) =>{
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };

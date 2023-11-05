@@ -82,7 +82,7 @@ const Header = ({ notification, setNotification }) => {
                   <div
                     onMouseLeave={handleMouseLeave}
                   >
-                    <p><a href={`/profile/${user._id}`}>Profile</a></p>
+                    <p><a href={`/profile`}>Profile</a></p>
                     <p onClick={() => logout()}>Logout</p>
                   </div>
                 )}

@@ -31,7 +31,7 @@ const imageDetail = () => {
   const [otherImages, setOtherImages] = useState([]);
 
   const fetchImages = async () => {
-    const oneImage = await singleImage(query.image * 1);
+    const oneImage = await singleImage(+query.image);
     const images = await getUploadedImages() ;
     setImage(oneImage);
     const otherImg = images.filter((item) =>{

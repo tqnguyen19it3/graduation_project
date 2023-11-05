@@ -38,7 +38,6 @@ const userChangePasswordValidate = (data) => {
 const userChangeProfileInfoValidate = (data) => {
     const userSchema = Joi.object({
         name: Joi.string().min(6).max(24).required(),
-        email: Joi.string().email().required()
     });
     return userSchema.validate(data);
 };

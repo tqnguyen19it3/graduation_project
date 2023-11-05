@@ -32,33 +32,39 @@ Content-Type: application/json
 }
 
 
-###
-GET http://localhost:3000/api/v1/user/user-profile/65391f832a9dad1240845cd8
-
 
 ###
-PUT http://localhost:3000/api/v1/user/change-profile-info/65391f832a9dad1240845cd8
+GET http://localhost:3000/api/v1/user/user-profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzJiMjdkZDkwYTJjMGY3OGM0NTRkMiIsImlhdCI6MTY5OTA5MDgwOCwiZXhwIjoxNzAzNDEwODA4fQ.7i25U0NzzdzHy750O-i3eSWzpHBXTPB-q5LkAXO98yQ
+
+
+
+###
+PUT http://localhost:3000/api/v1/user/change-profile-info
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDc3NmE2NmIzNjNhMmE0MGUxZTM3MyIsImlhdCI6MTY5OTE4Njg2NywiZXhwIjoxNzAzNTA2ODY3fQ.mbQ6osvRxC47e7SZSEDmsFeE2LyiMvB-aVMCtaAMdIs
 
 {
-    "name": "administrator",
-    "email": "admin@gmail.com"
+    "name": "drhappykuntqnaaa"
 }
 
 
 ###
-PUT http://localhost:3000/api/v1/user/change-password/653921772a9dad1240845ceb
+PUT http://localhost:3000/api/v1/user/change-password
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzkyMTc3MmE5ZGFkMTI0MDg0NWNlYiIsImlhdCI6MTY5OTE4MDQwMCwiZXhwIjoxNzAzNTAwNDAwfQ.fBepGJxmlTGGWM8AfzUN9RP0NocJIREKyKVnof93wsw
 
 {
-    "currentPassword": "FyDZmR",
+    "currentPassword": "1234567",
     "newPassword": "123456",
     "passwordConfirm": "123456"
 }
 
 
+
 ###
 GET http://localhost:3000/api/v1/NFTs/nft-created-by-user/6532b27dd90a2c0f78c454d2
+
 
 
 ###

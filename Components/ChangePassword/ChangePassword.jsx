@@ -1,37 +1,41 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { FormSVG } from "../SVG/index";
-import Style from "./ChangeProfile.module.css";
+import { Lock } from "../SVG/index";
+import Style from "./ChangePassword.module.css";
 import { Notification } from "../index";
 
-const ChangeProfile = ({
-  setChangeProfile,
+const ChangePassword = ({
+  setChangePassword,
   notification,
   setNotification,
 }) => {
   const NFTApi_Token = localStorage.getItem("NFTApi_Token");
 
-  //API ChangeProfile
-  const [userInfo, setUserInfo] = useState({
-    name: "",
+  //API ChangePassword
+  const [userPassword, setUserPassword] = useState({
+    currentPassword: "",
+    newPassword: "",
+    passwordConfirm: "",
   });
 
   const handleFormFieldChange = (fieldName, e) => {
-    setUserInfo({ ...userInfo, [fieldName]: e.target.value });
+    setUserPassword({ ...userPassword, [fieldName]: e.target.value });
   };
 
-  const apiChangeProfile = async (e) => {
+  const apiChangePassword = async (e) => {
     e.preventDefault();
 
-    setNotification("Waiting for change profile information...");
+    setNotification("Waiting for change password...");
     try {
       if (NFTApi_Token) {
         const response = await axios({
           method: "PUT",
-          url: `/api/v1/user/change-profile-info`,
+          url: `/api/v1/user/change-password`,
           withCredentials: true,
           data: {
-            name: userInfo.name,
+            currentPassword: userPassword.currentPassword,
+            newPassword: userPassword.newPassword,
+            passwordConfirm: userPassword.passwordConfirm,
           },
           headers: {
             Authorization: `Bearer ${NFTApi_Token}`,
@@ -39,9 +43,8 @@ const ChangeProfile = ({
           },
         });
         if (response.data.status == "success") {
-          setNotification("You have successfully change profile information");
-          localStorage.setItem("NFTApi_UserData", JSON.stringify(response.data.data.userData));
-          setChangeProfile(false);
+          setNotification("You have successfully change password");
+          setChangePassword(false);
           window.location.reload();
         } else {
           setNotification("Something went wrong, try again later");
@@ -64,26 +67,44 @@ const ChangeProfile = ({
         <div class={Style.card2}>
           <form class={Style.form}>
             <p id="heading" className={Style.heading}>
-              Change Profile Information
+              Change Password
             </p>
             <div class={Style.field}>
-            <FormSVG styleClass={Style.input_icon} />
+              <Lock styleClass={Style.input_icon} />
               <input
-                type="text"
+                type="password"
                 class={Style.input_field}
-                placeholder="Name"
-                onChange={(e) => handleFormFieldChange("name", e)}
+                placeholder="Current password"
+                onChange={(e) => handleFormFieldChange("currentPassword", e)}
+              />
+            </div>
+            <div class={Style.field}>
+              <Lock styleClass={Style.input_icon} />
+              <input
+                type="password"
+                class={Style.input_field}
+                placeholder="New password"
+                onChange={(e) => handleFormFieldChange("newPassword", e)}
+              />
+            </div>
+            <div class={Style.field}>
+              <Lock styleClass={Style.input_icon} />
+              <input
+                type="password"
+                class={Style.input_field}
+                placeholder="Password confirm"
+                onChange={(e) => handleFormFieldChange("passwordConfirm", e)}
               />
             </div>
             <div class={Style.btn}>
               <button
                 class={Style.button1}
-                onClick={() => setChangeProfile(false)}
+                onClick={() => setChangePassword(false)}
               >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </button>
             </div>
-            <button class={Style.button3} onClick={(e) => apiChangeProfile(e)}>
+            <button class={Style.button3} onClick={(e) => apiChangePassword(e)}>
               Submit
             </button>
           </form>
@@ -101,4 +122,4 @@ const ChangeProfile = ({
   );
 };
 
-export default ChangeProfile;
+export default ChangePassword;

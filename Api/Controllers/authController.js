@@ -77,7 +77,7 @@ exports.signUp = async (req, res, next) => {
         createSendToken(newUser, 201, req, res);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
 
@@ -107,7 +107,7 @@ exports.login = async (req, res, next) => {
         createSendToken(user, 200, req, res);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
 
@@ -152,7 +152,7 @@ exports.forgotPassword = async (req, res, next) => {
         
     } catch (error) {
         console.log(error);
-        res.status(500).json({ status: 'fail', error: 'Internal server error' });
+        res.status(500).json({ status: 'fail', message: 'Internal server error' });
     }
 };
    
