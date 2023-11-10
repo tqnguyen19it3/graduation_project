@@ -1,0 +1,137 @@
+[{
+  "_id": {
+    "$oid": "652161fbe6e8620fa8caa5ed"
+  },
+  "title": "test2",
+  "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolore minus asperiores soluta fugit deleniti, quis numquam possimus voluptatem aperiam, maxime eveniet ratione? Aperiam sed rerum commodi praesentium accusantium similique.",
+  "category": "Animal",
+  "image": "https://gateway.pinata.cloud/ipfs/QmSXhs9fysSNC3mhGJ2fAsN6Vs3z73pyu6Wq7Q5Q9k8wwc",
+  "address": "0x22d491Bde2303f2f43325b2108D26f1eAbA1e32b",
+  "email": "tqnguyen.19it3@vku.udn.vn",
+  "createdAt": {
+    "$date": "2023-10-07T13:49:47.721Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-07T13:49:47.721Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "652163a6e6e8620fa8caa5f6"
+  },
+  "title": "test3",
+  "description": "test Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolore minus asperiores soluta fugit deleniti, quis numquam possimus voluptatem aperiam, maxime eveniet ratione? Aperiam sed rerum commodi praesentium accusantium similique.",
+  "category": "Artificial",
+  "image": "https://gateway.pinata.cloud/ipfs/QmZz2CqXwBANdutAjyiuoaF8BmVknJ3xfCwmWC54dhQ3Dw",
+  "address": "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
+  "email": "tqnguyen.19it3@vku.udn.vn",
+  "createdAt": {
+    "$date": "2023-10-07T13:56:54.246Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-07T13:56:54.246Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "65219314725cc42298781d47"
+  },
+  "title": "Jesus NFT",
+  "description": "Welcome to NFTs IPFS Upload Our products help you securely distribute any type of media at scale-freeing you from restrictive platforms, middlemen, and algorithms that limit your creative agency.",
+  "category": "Nature",
+  "image": "https://gateway.pinata.cloud/ipfs/QmYUBQ1EMY5BSyBRrDMsUAe1WZAK6knYF26RJunF4WV5xk",
+  "address": "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
+  "email": "rumtqn@gmail.com",
+  "createdAt": {
+    "$date": "2023-10-07T17:19:16.457Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-07T17:19:16.457Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "652ba981c4e511055800983d"
+  },
+  "title": "meow meow",
+  "description": "An NFT (non-fungible token) is a digital asset that has been authenticated using blockchain technology. Digital assets are intangible objects that live on the Internet, including videos, GIFs, images, and collages.",
+  "category": "Nature",
+  "image": "https://gateway.pinata.cloud/ipfs/QmaAWwBHianryn2s1tQ5gxBf3UqNaNmD69o1N2NzJRwDwx",
+  "address": "0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0",
+  "email": "rumtqn@sict.udn.vn",
+  "createdAt": {
+    "$date": "2023-10-15T08:57:37.968Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-15T08:57:37.968Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6533d0e25086e40a146cb6c9"
+  },
+  "title": "Nautilus",
+  "description": "“Nonfungible tokens” and blockchain technology are taking the mainstream art world by storm, fetching huge prices. We explain, or try to.",
+  "category": "Artificial",
+  "image": "https://gateway.pinata.cloud/ipfs/QmcxStUkuxswzrNwDrDCDJdt8QGyhmVroYKKXAXXLJyomh",
+  "address": "0xE2D265793F14759E3fB9fC83804323d3c79026FF",
+  "email": "tqnguyen.19it3@sict.udn.vn",
+  "createdAt": {
+    "$date": "2023-10-21T13:23:46.323Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-21T13:23:46.323Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6533d85ce4aac325b8e1c6d5"
+  },
+  "title": "Wolf NFT",
+  "description": "A whole new animated 3D virtual world based on social connections. To experience the metaverse, you need a virtual and augmented reality headset. Our experts and techies have mastered this futuristic and science fiction.\nignite webstudio offers latest and customized options for NFT art marketplace as well as metaverse.",
+  "category": "Artificial",
+  "image": "https://gateway.pinata.cloud/ipfs/QmRQbyFj1pmvveGeYrwyuW38JpXkY8FFWLv1hk4UrGuSAt",
+  "address": "0xE2D265793F14759E3fB9fC83804323d3c79026FF",
+  "email": "tqnguyen.19it3@vku.udn.vn",
+  "createdAt": {
+    "$date": "2023-10-21T13:55:40.093Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-21T13:55:40.093Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6533dd9c52c4590f70888f04"
+  },
+  "title": "Human",
+  "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, harum! Consectetur similique quis, ducimus laudantium optio eaque ad tempora eum, eligendi, dicta rem. Fuga, odio? Eius, aspernatur. Eius, quos ipsam!",
+  "category": "Nature",
+  "image": "https://gateway.pinata.cloud/ipfs/QmWsuCATozaQv68QZTPVwckrxwUaBK6zP4Saa2ZCrcDJLt",
+  "address": "0x194E7fBB2F03345Ba5470f661508060c8d4dfb65",
+  "email": "rumtqn@gmail.com",
+  "createdAt": {
+    "$date": "2023-10-21T14:18:04.534Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-21T14:18:04.534Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "654df870ba79c71f18f07ef7"
+  },
+  "title": "Pug King NFT",
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est blanditiis sint labore recusandae, vel sunt unde dignissimos iste. Amet veritatis minus dolor sed, reiciendis quae cumque consequuntur quia non accusantium.",
+  "category": "Animal",
+  "image": "https://gateway.pinata.cloud/ipfs/QmPtFiBAWp9Cmseet913ex3NWZ8uP9TB8ZkJ9Q3eLbhwJa",
+  "address": "0x7fdb829a3B97e6cF93F1176276faa43BEF062105",
+  "email": "tqnguyen.19it3@sict.udn.vn",
+  "createdAt": {
+    "$date": "2023-11-10T09:31:28.048Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-10T09:31:28.048Z"
+  },
+  "__v": 0
+}]

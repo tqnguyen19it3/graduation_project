@@ -55,7 +55,7 @@ const Home = () => {
   }, [address, contract]);
 
   if (allImages.length == 0) {
-    console.log("Loading");
+    console.log("Loading...");
   } else {
     allImages.map((el) => oldImages.push(el));
   }
@@ -115,10 +115,8 @@ const Home = () => {
             url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
             data: formData,
             headers: {
-              pinata_api_key: `9d03a2850c7a2c190538`,
-              pinata_secret_api_key: `19df2cf3af00256fc86448cee4cd5796e58acb0dcd62ba86090c28aaad4efba5`,
-              // pinata_api_key: `3b1697b42d5859d6a42f`,
-              // pinata_secret_api_key: `dcfcb3154f52ba92f8813b9a2ee29c236261df3de39625e17144f84c4fbb8a0f`,
+              pinata_api_key: `3b1697b42d5859d6a42f`,
+              pinata_secret_api_key: `dcfcb3154f52ba92f8813b9a2ee29c236261df3de39625e17144f84c4fbb8a0f`,
               "Content-Type": "multipart/form-data",
             },
           });

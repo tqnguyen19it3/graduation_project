@@ -36,7 +36,7 @@ const Product = ({
       (<>
         <div className={Style.Product}>
           <div className= {Style.image}>
-            <img className={Style.image_img} src={image?.imageURL != 'https://gateway.pinata.cloud/ipfs/$(response.data.IpfsHash}' ? image.imageURL : 'https://i.pinimg.com/564x/00/d2/47/00d247ab46fcf887dcebd874b8bba824.jpg'} alt="image" />
+            <img className={Style.image_img} src={image.imageURL} alt="image" />
           </div>
           <div className={Style.detail}>
             <div className={Style.detail_box}>

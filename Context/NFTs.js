@@ -14,7 +14,7 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
     const { contract } = useContract(
-        "0x76C3056bFb537eFc8D698BC1A40fF2B8856d12D7"
+        "0x8178a7446fBFAe95DE89Dc5cbfcb994aC0d67341"
     );
 
     const address = useAddress();
