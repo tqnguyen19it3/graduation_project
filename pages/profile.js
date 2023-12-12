@@ -74,6 +74,10 @@ const Profile = () => {
             <Image className="avatar_img" src={images.client1} alt="avatar" />
             <h4>Username: {userData.name}</h4>
             <h4>Email: {userData.email}</h4>
+            <h4>Gender: {userData?.gender}</h4>
+            <h4>Dob: {userData.dob ? new Date(userData.dob).toISOString().split('T')[0] : ""}</h4>
+            <h4>PhoneNumber: {userData.phoneNumber}</h4>
+            <h4>Address: {userData.address}</h4>
             <h4>Role: {userData.role}</h4>
             <div style={{ display: "inline-flex" }}>
               <button onClick={() => setChangeProfile(true)}>

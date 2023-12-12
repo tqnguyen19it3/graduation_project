@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
             message: "Passwords are not the same!",
         },
     },
+    phoneNumber: { type: String },
+    dob: { type: Date},
+    gender: { type: String },
+    address: { type: String },
 }, {timestamps: true});
 
 userSchema.pre("save", async function (next){

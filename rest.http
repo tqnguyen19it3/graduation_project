@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
     "name": "tqnguyen",
-    "email": "rumtqn@gmail.com",
+    "email": "tqnguyen259@gmail.com",
     "password": "123456",
     "passwordConfirm": "123456"
 }
@@ -42,10 +42,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzJiMjdkZ
 ###
 PUT http://localhost:3000/api/v1/user/change-profile-info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NDc3NmE2NmIzNjNhMmE0MGUxZTM3MyIsImlhdCI6MTY5OTE4Njg2NywiZXhwIjoxNzAzNTA2ODY3fQ.mbQ6osvRxC47e7SZSEDmsFeE2LyiMvB-aVMCtaAMdIs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzJiM2FlMWVlODUyMzkwODBjOGQyOCIsImlhdCI6MTY5OTYxNzUxOCwiZXhwIjoxNzAzOTM3NTE4fQ.gPlfGX8aH2ckQWyR4d0rUGgQ7R_Y5OGp8CFMpJJ0mMY
 
 {
-    "name": "drhappykuntqnaaa"
+    "name": "rumtqnsict23"
 }
 
 

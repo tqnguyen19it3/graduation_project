@@ -27,8 +27,6 @@ thirdweb: rumtqn@gmail.com - Tài khoản An
 
 //////////////////// FIX ///////////////////////////////////
 
-trang about (chỉnh lại nội dung hiển thị)
-trang profile (xử lý change profile thêm nhiều trường khác)
 search chưa tốt
 
 tạo NFT mà tài khoản k có đủ tiền -> lỗi ở console (chưa xử lý chặn hành vi/hiển thị cụ thể, chỉ hiển thị tạm bằng alert)

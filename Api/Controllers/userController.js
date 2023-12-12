@@ -33,9 +33,6 @@ exports.userProfile =  async (req, res, next) => {
 // [PUT] / CHANGE PROFILE INFO
 exports.changeProfileInfo = async (req, res, next) =>{
     try {
-        const userInfo = { 
-            name: req.body.name,
-        }
 
         const { error } = userChangeProfileInfoValidate(req.body);
         if(error){
@@ -54,7 +51,7 @@ exports.changeProfileInfo = async (req, res, next) =>{
         }
 
         // update db
-        const userData = await User.findOneAndUpdate({ _id: req.payload.id }, userInfo, { new: true });
+        const userData = await User.findOneAndUpdate({ _id: req.payload.id }, req.body, { new: true });
 
         // remove password from output
         userData.password = undefined;

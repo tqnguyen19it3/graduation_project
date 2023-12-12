@@ -38,6 +38,10 @@ const userChangePasswordValidate = (data) => {
 const userChangeProfileInfoValidate = (data) => {
     const userSchema = Joi.object({
         name: Joi.string().min(6).max(24).required(),
+        gender: Joi.string().valid('male', 'female', 'other'),
+        dob: Joi.date().iso().max('now'),
+        address: Joi.string(),
+        phoneNumber: Joi.string().pattern(new RegExp('^[0-9]{10}$')), // Assume 10-digit phone number
     });
     return userSchema.validate(data);
 };

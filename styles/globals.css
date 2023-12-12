@@ -159,6 +159,10 @@ body {
 .documentation-page ol {
     padding-left: 20px;
 }
+
+.documentation-page code {
+    background-color: gray;
+}
   
 .documentation-page .image-container {
     display: flex;

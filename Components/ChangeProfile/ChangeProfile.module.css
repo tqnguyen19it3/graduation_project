@@ -59,9 +59,12 @@
 }
 
 .category {
+    text-align: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    color:#f89b29; 
 }
+
 .form .btn {
     display: flex;
     justify-content: center;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FormSVG } from "../SVG/index";
 import Style from "./ChangeProfile.module.css";
@@ -11,18 +11,29 @@ const ChangeProfile = ({
 }) => {
   const NFTApi_Token = localStorage.getItem("NFTApi_Token");
 
-  //API ChangeProfile
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-  });
+  const [userInfo, setUserInfo] = useState("");
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("NFTApi_UserData"));
+    const formattedDate = user.dob ? new Date(user.dob).toISOString().split('T')[0] : "";
+    user.dob = formattedDate;
+    setUserInfo(user)
+  }, []);
 
   const handleFormFieldChange = (fieldName, e) => {
     setUserInfo({ ...userInfo, [fieldName]: e.target.value });
   };
 
+  const userDataToSend = {
+    name: userInfo.name,
+    dob: userInfo.dob || undefined,
+    gender: userInfo.gender || undefined,
+    phoneNumber: userInfo.phoneNumber || undefined,
+    address: userInfo.address || undefined,
+  };
+
+  
   const apiChangeProfile = async (e) => {
     e.preventDefault();
-
     setNotification("Waiting for change profile information...");
     try {
       if (NFTApi_Token) {
@@ -30,9 +41,7 @@ const ChangeProfile = ({
           method: "PUT",
           url: `/api/v1/user/change-profile-info`,
           withCredentials: true,
-          data: {
-            name: userInfo.name,
-          },
+          data: userDataToSend,
           headers: {
             Authorization: `Bearer ${NFTApi_Token}`,
             "Content-Type": "application/json",
@@ -72,7 +81,65 @@ const ChangeProfile = ({
                 type="text"
                 class={Style.input_field}
                 placeholder="Name"
+                value={userInfo.name}
                 onChange={(e) => handleFormFieldChange("name", e)}
+              />
+            </div>
+            <div className={Style.category}>
+              <label>
+                  <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      onChange={(e) => handleFormFieldChange("gender", e)}
+                  />
+                  Male
+              </label>
+              <label>
+                  <input
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      onChange={(e) => handleFormFieldChange("gender", e)}
+                  />
+                  Female
+              </label>
+              <label>
+                  <input
+                      type="radio"
+                      name="gender"
+                      value="other"
+                      onChange={(e) => handleFormFieldChange("gender", e)}
+                  />
+                  Other
+              </label>
+            </div>
+            <div className={Style.field}>
+              <input
+                  type="date"
+                  className={Style.input_field}
+                  value={userInfo.dob}
+                  onChange={(e) => handleFormFieldChange("dob", e)}
+              />
+            </div>
+            <div className={Style.field}>
+              <FormSVG styleClass={Style.input_icon} />
+              <input
+                  type="text"
+                  className={Style.input_field}
+                  placeholder="Address"
+                  value={userInfo.address}
+                  onChange={(e) => handleFormFieldChange("address", e)}
+              />
+            </div>
+            <div className={Style.field}>
+              <FormSVG styleClass={Style.input_icon} />
+              <input
+                  type="text"
+                  className={Style.input_field}
+                  placeholder="Phone Number"
+                  value={userInfo.phoneNumber}
+                  onChange={(e) => handleFormFieldChange("phoneNumber", e)}
               />
             </div>
             <div class={Style.btn}>
