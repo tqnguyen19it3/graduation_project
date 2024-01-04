@@ -51,15 +51,19 @@ const Filter = ({
   }, [search]);
 
   const filter = [
-    { name: "Old Images" },
-    { name: "Recent Images" },
+    { name: "All NFT" },
+    { name: "Nature" },
+    { name: "Artificial" },
+    { name: "Animal" },
   ];
 
   useEffect(() => {
-    if (activeSelect === "Old Images") {
+    if (activeSelect === "All NFT") {
       setAllImages(initialOldImages);
-    } else if (activeSelect === "Recent Images") {
-      setAllImages([...initialOldImages].reverse());
+    } else {
+      setAllImages(initialOldImages.filter(function(NFT) {
+        return NFT.category === activeSelect;
+      }));
     }
   }, [activeSelect]);
 

@@ -39,7 +39,7 @@ const Home = () => {
   const [display, setDisplay] = useState(null);
   const [notification, setNotification] = useState("");
   const [allImages, setAllImages] = useState([]);
-  const [activeSelect, setActiveSelect] = useState("Old Images");
+  const [activeSelect, setActiveSelect] = useState("All NFT");
   const [imagesCopy, setImagesCopy] = useState([]);
   //GET DATA
   const oldImages = [];

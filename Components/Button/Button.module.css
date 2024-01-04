@@ -2,6 +2,7 @@
     position: relative;
     overflow: hidden;
     height: 3rem;
+    width: 40%;
     padding: 0 2rem;
     border-radius: 1.5rem;
     background: linear-gradient(-45deg, #f89b29 40%, #483D8B 100%);

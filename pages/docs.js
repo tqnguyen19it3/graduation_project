@@ -73,7 +73,7 @@ const Docs = () => {
                   <li>hardhat.config.js file</li>
                 </ul>
               </li>
-              <li>Move to web3 directory and run the command: <code>npm deploy</code> or <code>yarn deploy</code></li>
+              <li>Move to web3 directory and run the command: <code>npm run deploy</code> or <code>yarn deploy</code></li>
               <li>Run the project locally outside of the project's main directory: <code>npm start</code> or <code>yarn start</code></li>
             </ol>
           </section>

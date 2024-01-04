@@ -27,7 +27,6 @@ contract nftsIPFS {
         string memory,
         address,
         string memory
-
     ){
         imagesCount++;
         NFTs storage nft = nftImages[imagesCount];
@@ -47,7 +46,6 @@ contract nftsIPFS {
             _category,
             _creator,
             _image
-
         );
     }
 
