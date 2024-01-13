@@ -1,3 +1,4 @@
+// trang chủ của ứng dụng và chứa các component và logic để tải lên và hiển thị NFTs
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Image from "next/image";
@@ -14,7 +15,7 @@ import {
   Filter,
   Form,
 } from "../Components";
-import { useStateContext } from "../Context/NFTs";
+import { useStateContext } from "../Context/NFTs"; //Hook useStateContext từ ngữ cảnh trạng thái NFTs.
 import images from "../Components/Image/client/index";
 
 const Home = () => {
@@ -31,8 +32,9 @@ const Home = () => {
     loading,
     //API
     getAllNftsAPI,
-  } = useStateContext();
+  } = useStateContext(); //lấy các giá trị và hàm từ context state
 
+  // khởi tạo các biến state và các hàm để cập nhật giá trị của chúng
   const [openProfile, setOpenProfile] = useState(false);
   const [closeForm, setCloseForm] = useState(true);
   const [file, setFile] = useState(null);
@@ -44,13 +46,14 @@ const Home = () => {
   //GET DATA
   const oldImages = [];
 
+  //Định nghĩa hàm fetchImages để lấy danh sách hình ảnh đã tải lên từ hợp đồng thông minh và API.
   const fetchImages = async () => {
     const images = await getUploadedImages();
     setAllImages(images);
     //API NFTS
     const apiImages = await getAllNftsAPI();
   };
-  useEffect(() => {
+  useEffect(() => { //Sử dụng hook useEffect để gọi hàm fetchImages khi địa chỉ hoặc hợp đồng thông minh thay đổi.
     if (contract) fetchImages();
   }, [address, contract]);
 
@@ -70,6 +73,7 @@ const Home = () => {
     image: "",
   });
 
+  //Khi hàm này được gọi trong một trường nhập liệu, nó sẽ cập nhật giá trị của trường đó vào imageInfo của component, đồng thời cập nhật lại giao diện người dùng để phản ánh sự thay đổi
   const handleFormFieldChange = (fieldName, e) => {
     setImageInfo({ ...imageInfo, [fieldName]: e.target.value });
   };
@@ -105,11 +109,12 @@ const Home = () => {
         setTimeout(function () {
           location.reload();
         }, 3000);
-      } else {
+      } else { // kiểm tra validate ok, hàm tiếp tục thực hiện quá trình tải lên hình ảnh
         try {
           const formData = new FormData();
           formData.append("file", file);
 
+          //Gửi yêu cầu bằng method POST bằng API của Pinata với endpoint do họ cung cấp để tải lên hình ảnh lên IPFS
           const response = await axios({
             method: "post",
             url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
@@ -120,8 +125,10 @@ const Home = () => {
               "Content-Type": "multipart/form-data",
             },
           });
+          //Nếu quá trình tải lên thành công, nó lấy giá trị IpfsHash được trả về từ phản hồi kết hợp cổng truy cập công cộng vào IPFS thành 1 URL hoàn chỉnh để truy cập đến ảnh đã đc lưu trữ trên IPFS
           const image = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
 
+          // gọi hàm UploadImage bên Context để tải thông tin hình ảnh và đường dẫn vào hợp đồng thông minh
           await UploadImage({
             ...imageInfo,
             image: image,
@@ -136,6 +143,7 @@ const Home = () => {
     setFile(null);
   };
 
+  //cả hai hàm retrieveFile và onImageChange đều giúp xử lý và hiển thị hình ảnh được chọn từ trình duyệt, nhằm cung cấp trải nghiệm tải lên và xem trước hình ảnh cho người dùng trên giao diện
   const retrieveFile = (e) => {
     const data = e.target.files[0];
     const reader = new window.FileReader();
